@@ -30,14 +30,9 @@ const IMG_COLS = 5, CELL_W = 460, CELL_H = 520, X0 = 60, Y0 = 240;
 await figma.loadFontAsync({ family: "Inter", style: "Bold" });
 await figma.loadFontAsync({ family: "Inter", style: "Regular" });
 
-async function listFolder(folder) {
-  try {
-    const r = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/refs/${folder}?ref=${BRANCH}&t=${Date.now()}`);
-    if (!r.ok) return [];
-    const j = await r.json();
-    return j.filter(f => /\.(png|jpe?g|webp)$/i.test(f.name)).map(f => f.name).sort();
-  } catch { return []; }
-}
+const MANIFEST = await fetch(RAW + "manifest.json?t=" + Date.now()).then(r => r.json()).catch(() => null);
+if (!MANIFEST) { console.error("manifest.json yuklanmadi — hech narsa oʻzgartirilmadi"); return; }
+async function listFolder(folder) { return MANIFEST[folder] || []; }
 
 let page = figma.root.children.find(p => p.name === PAGE_NAME);
 if (!page) { page = figma.createPage(); page.name = PAGE_NAME; }
