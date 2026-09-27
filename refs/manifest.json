@@ -43,7 +43,9 @@
   "hero-31-shieldi-light-monitor.png",
   "hero-32-busy-brilliant-stuck-orange.png",
   "hero-33-dvisionmedia-green-fullsite.png",
-  "hero-34-dotai-green-analytics.png"
+  "hero-34-dotai-green-analytics.png",
+  "hero-35-callivio-dashboard.png",
+  "hero-36-landing-page-ru-blue.png"
  ],
  "02-xizmatlar": [
   "srv-01-icon-cards-grid.png",
@@ -57,7 +59,15 @@
   "srv-09-tariff-constructor-ru.png"
  ],
  "03-narxlar": [
-  "price-01-before-after-split.png"
+  "price-01-before-after-split.png",
+  "price-02-pricing-plus-compare-table.png",
+  "price-03-three-plans-light.png",
+  "price-04-three-plans-dark-green.png",
+  "price-05-three-plans-dark-minimal.png",
+  "price-06-easy-pricing-red.png",
+  "price-07-plans-dark-green-old.png",
+  "price-08-compare-table-us-vs-them.png",
+  "price-09-service-compare-table-green.png"
  ],
  "04-jamoa": [],
  "05-savollar": [],
