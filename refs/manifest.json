@@ -45,7 +45,10 @@
   "hero-33-dvisionmedia-green-fullsite.png",
   "hero-34-dotai-green-analytics.png",
   "hero-35-callivio-dashboard.png",
-  "hero-36-landing-page-ru-blue.png"
+  "hero-36-landing-page-ru-blue.png",
+  "hero-37-retainer-agency-dashboard.png",
+  "hero-38-law-firm-green-ru-laptop.png",
+  "hero-39-dotai-green-mobile.png"
  ],
  "02-xizmatlar": [
   "srv-01-icon-cards-grid.png",
@@ -69,7 +72,11 @@
   "price-08-compare-table-us-vs-them.png",
   "price-09-service-compare-table-green.png"
  ],
- "04-jamoa": [],
+ "04-jamoa": [
+  "team-01-green-fullpage-with-team-grid.png",
+  "team-02-collage-financer-nasha-komanda.png",
+  "team-03-three-people-blue-poster.png"
+ ],
  "05-savollar": [],
  "06-aloqa": []
 }
