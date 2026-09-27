@@ -6,25 +6,14 @@ const RAW = `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/refs/`
 const BLOCKS = [
   ["00 Header", "00-header", "navbar · sticky header · хедер"],
   ["01 Hero", "01-hero", "hero section · hero with document card · первый экран"],
-  ["02 Holatlar (pain points)", "02-holatlar", "pain points section · боли клиента"],
-  ["03 3 savol (self-check)", "03-savol", "checklist section · чек-лист"],
-  ["04 Solishtirish jadvali", "04-solishtirish", "comparison table · us vs them · таблица сравнения"],
-  ["05 Raqamlar (stats)", "05-raqamlar", "stats section · numbers · цифры и факты"],
-  ["06 Yashirin xavf", "06-xavf", "risk section · cost of inaction · цена ошибки"],
-  ["07 Xizmatlar", "07-xizmatlar", "services cards · bento grid · карточки услуг"],
-  ["08 Majburiyatlar", "08-majburiyatlar", "guarantees section · numbered list · гарантии"],
-  ["09 Narx", "09-narx", "pricing section · how pricing works · тарифы"],
-  ["10 Kim bilan ishlaymiz", "10-kimga", "who is it for · for whom / not for whom · для кого"],
-  ["11 Jamoa", "11-jamoa", "team section · team cards · команда"],
-  ["12 Mijozlar logolari", "12-logolar", "logo cloud · trusted by · нам доверяют"],
-  ["13 FAQ", "13-faq", "FAQ accordion · вопрос-ответ"],
-  ["14 Ariza formasi (CTA)", "14-ariza", "lead form · final CTA · форма заявки"],
-  ["15 Footer", "15-footer", "footer · подвал сайта"],
-  ["16 Xizmat sahifasi (inner page)", "16-xizmat-sahifasi", "service page hero · process steps · what's included"],
-  ["17 Butun sayt (full page)", "17-butun-sayt", "accounting website · dark luxury · сайт бухгалтерских услуг"],
+  ["02 Xizmatlar", "02-xizmatlar", "services cards · bento grid · карточки услуг"],
+  ["03 Narxlar", "03-narxlar", "pricing section · comparison table · тарифы · таблица сравнения"],
+  ["04 Jamoa", "04-jamoa", "team section · team cards · команда"],
+  ["05 Savollar (FAQ)", "05-savollar", "FAQ accordion · вопрос-ответ"],
+  ["06 Aloqa (ariza + footer)", "06-aloqa", "lead form · final CTA · footer · форма заявки"],
 ];
 
-const W = 2400, MIN_H = 900, GAP = 200, COLS = 3;
+const W = 2400, MIN_H = 900, GAP = 200, COLS = 2;
 const IMG_COLS = 5, CELL_W = 460, CELL_H = 520, X0 = 60, Y0 = 240;
 
 await figma.loadFontAsync({ family: "Inter", style: "Bold" });
@@ -38,6 +27,8 @@ let page = figma.root.children.find(p => p.name === PAGE_NAME);
 if (!page) { page = figma.createPage(); page.name = PAGE_NAME; }
 await figma.setCurrentPageAsync(page);
 
+const keep = new Set(BLOCKS.map(b => b[0]));
+for (const n of [...page.children]) if (n.type === "SECTION" && !keep.has(n.name)) n.remove();
 const secs = [];
 let total = 0;
 for (const [name, folder, hint] of BLOCKS) {
