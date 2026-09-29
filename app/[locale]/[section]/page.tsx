@@ -168,24 +168,8 @@ export default async function SectionPage({ params }: Props) {
             </ul>
           </div>
         </section>
-        <section className="light">
-          <div className="wrap faq-grid">
-            <div>
-              <h2>{h.faq.h2}</h2>
-            </div>
-            <div className="faq faq-light">
-              {h.faq.items.slice(-2).map((f) => (
-                <details key={f.q} open>
-                  <summary>{f.q}</summary>
-                  <p>{f.a}</p>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
         <CtaSection locale={locale} eyebrow={h.cta.eyebrow} text={h.pricing.cta.replace(" →", "")} source="pricing" />
         <JsonLd data={crumbs} />
-        <JsonLd data={faqLd(h.faq.items.slice(-2))} />
       </>
     );
   }
@@ -194,23 +178,6 @@ export default async function SectionPage({ params }: Props) {
     return (
       <>
         <Hero locale={locale} kind={kind} />
-        <section className="dark">
-          <div className="wrap">
-            <div className="team-grid">
-              {h.team.people.map((pp) => (
-                <div className="person" key={pp.name}>
-                  <div className="role">{pp.role}</div>
-                  <h3>{pp.name}</h3>
-                  <ul>
-                    {pp.facts.map((f) => (
-                      <li key={f}>{f}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
         <section className="light">
           <div className="wrap wrap-wide">
             <div className="head">
@@ -233,9 +200,34 @@ export default async function SectionPage({ params }: Props) {
             </ul>
           </div>
         </section>
-        <section className="dark">
+        <section className="dark glass">
+          <div className="glass-bg" aria-hidden="true">
+            <Tiles className="a" />
+            <Tiles className="b" />
+          </div>
           <div className="wrap">
             <div className="head">
+              <div>
+                <div className="eyebrow">
+                  <Tiles /> {h.team.eyebrow}
+                </div>
+                <h2>{h.team.h2}</h2>
+              </div>
+            </div>
+            <div className="team-grid">
+              {h.team.people.map((pp) => (
+                <div className="person" key={pp.name}>
+                  <div className="role">{pp.role}</div>
+                  <h3>{pp.name}</h3>
+                  <ul>
+                    {pp.facts.map((f) => (
+                      <li key={f}>{f}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            <div className="head head-gap">
               <div>
                 <div className="eyebrow">
                   <Tiles /> {h.clients.eyebrow}
@@ -254,21 +246,45 @@ export default async function SectionPage({ params }: Props) {
   }
 
   if (kind === "faq") {
-    const all = [
-      ...h.faq.items,
-      ...serviceOrder.flatMap((id) => services[locale][id].faq),
-    ].filter((f, i, arr) => arr.findIndex((x) => x.q === f.q) === i);
+    const general = h.faq.items;
+    const seen = new Set(general.map((f) => f.q));
+    const byService = serviceOrder.flatMap((id) => services[locale][id].faq).filter((f) => (seen.has(f.q) ? false : (seen.add(f.q), true)));
+    const all = [...general, ...byService];
     return (
       <>
         <Hero locale={locale} kind={kind} />
         <section className="light">
-          <div className="wrap faq faq-light" style={{ maxWidth: 900 }}>
-            {all.map((f) => (
-              <details key={f.q}>
-                <summary>{f.q}</summary>
-                <p>{f.a}</p>
-              </details>
-            ))}
+          <div className="wrap faq-grid">
+            <div>
+              <h2>{h.faq.h2}</h2>
+            </div>
+            <div className="faq faq-light">
+              {general.map((f) => (
+                <details key={f.q}>
+                  <summary>{f.q}</summary>
+                  <p>{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+        <section className="dark glass">
+          <div className="glass-bg" aria-hidden="true">
+            <Tiles className="a" />
+            <Tiles className="b" />
+          </div>
+          <div className="wrap faq-grid">
+            <div>
+              <h2>{t.allServices}</h2>
+            </div>
+            <div className="faq">
+              {byService.map((f) => (
+                <details key={f.q}>
+                  <summary>{f.q}</summary>
+                  <p>{f.a}</p>
+                </details>
+              ))}
+            </div>
           </div>
         </section>
         <CtaSection locale={locale} eyebrow={h.cta.eyebrow} source="faq" />

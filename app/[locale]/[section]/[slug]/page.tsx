@@ -159,27 +159,28 @@ export default async function ServicePage({ params }: Props) {
         </div>
       </section>
 
-      <section className="dark">
-        <div className="wrap faq-grid">
-          <div>
-            <h2>{s.priceTitle}</h2>
-            <p className="lead" style={{ margin: "24px 0 32px" }}>{s.price}</p>
-            <Link className="link" href={sectionPath(locale, "pricing")}>{t.pricingLink}</Link>
-          </div>
-          <div className="faq">
-            {s.faq.map((f) => (
-              <details key={f.q}>
-                <summary>{f.q}</summary>
-                <p>{f.a}</p>
-              </details>
-            ))}
-          </div>
+      <section className="dark glass">
+        <div className="glass-bg" aria-hidden="true">
+          <Tiles className="a" />
+          <Tiles className="b" />
         </div>
-      </section>
-
-      <section className="light">
         <div className="wrap">
-          <div className="head">
+          <div className="faq-grid">
+            <div>
+              <h2>{s.priceTitle}</h2>
+              <p className="lead" style={{ margin: "24px 0 32px" }}>{s.price}</p>
+              <Link className="link" href={sectionPath(locale, "pricing")}>{t.pricingLink}</Link>
+            </div>
+            <div className="faq">
+              {s.faq.map((f) => (
+                <details key={f.q}>
+                  <summary>{f.q}</summary>
+                  <p>{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+          <div className="head head-gap">
             <div>
               <h2>{t.relatedTitle}</h2>
             </div>

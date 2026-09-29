@@ -18,7 +18,7 @@ const paths: Record<string, string> = {
 export default function ServiceIcon({ id, className = "svc-icon" }: { id: ServiceId | "all"; className?: string }) {
   const d = paths[id] || paths.all;
   return (
-    <svg className={className} viewBox="0 0 56 56" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg className={className} viewBox="0 0 56 56" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d={d} />
     </svg>
   );

@@ -3,22 +3,25 @@ import { contacts, ui } from "@/content/site";
 import LeadForm from "./LeadForm";
 import Tiles from "./Tiles";
 
+/** Ariza bloki. tone="dark" — toʻq fon, forma maydonlari --bg-dark-2 (brief 7-band); toʻq/och navbat buzilmasligi uchun sahifaga qarab tanlanadi. */
 export default function CtaSection({
   locale,
   eyebrow,
   title,
   text,
   source,
+  tone = "light",
 }: {
   locale: Locale;
   eyebrow: string;
   title?: string;
   text?: string;
   source: string;
+  tone?: "light" | "dark";
 }) {
   const t = ui[locale];
   return (
-    <section className="cta light" id="ariza-section">
+    <section className={"cta " + tone} id="ariza-section">
       <div className="wrap cta-grid">
         <div>
           <div className="eyebrow">

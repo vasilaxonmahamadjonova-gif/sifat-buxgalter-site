@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ClientLogos from "@/components/ClientLogos";
+import CountUp from "@/components/CountUp";
 import CtaSection from "@/components/CtaSection";
 import PromiseIcon from "@/components/PromiseIcon";
 import ReportCard from "@/components/ReportCard";
@@ -147,7 +148,7 @@ export default async function HomePage({ params }: Props) {
               return (
                 <div className="stat" key={n}>
                   <strong>
-                    {m ? m[1] : n}
+                    <CountUp value={m ? m[1] : n} />
                     {m && m[2] && <small>{m[2]}</small>}
                   </strong>
                   <span>{l}</span>

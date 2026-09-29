@@ -12,7 +12,7 @@ const SELECTOR = [
   ".head", ".manifest", ".stat", ".trig-grid li", ".trig-note",
   ".check-q li", ".check-outro", ".risk-steps li", ".risk-big", ".risk-note", ".risk-outro",
   ".svc", ".glass-card", ".board-card", ".card", ".who-col", ".process li", ".person",
-  ".logos > *", ".faq details", ".cta-grid > *", ".price-links", ".checklist li", ".related a", ".prose p",
+  ".marquee", ".faq details", ".cta-grid > *", ".price-links", ".checklist li", ".related a", ".prose p",
 ].join(",");
 
 export default function Motion() {
