@@ -186,7 +186,8 @@ section { padding: var(--section) 0; }
 .stats { display: grid; grid-template-columns: repeat(4, auto); justify-content: space-between; gap: 40px; }
 .stat strong { display: block; font-size: clamp(52px, 6.4vw, 96px); font-weight: 800; letter-spacing: -.05em; line-height: .95; white-space: nowrap; }
 .stat strong small { font-size: .38em; font-weight: 600; letter-spacing: -.02em; margin-left: 8px; color: var(--accent); }
-.stat span { display: block; margin-top: 14px; font-size: 15px; color: var(--muted); max-width: 200px; }
+.stat > span { display: block; margin-top: 14px; font-size: 15px; color: var(--muted); max-width: 200px; }
+.stat strong > span { display: inline; font: inherit; color: inherit; }
 @media (max-width: 900px) { .stats { grid-template-columns: 1fr 1fr; justify-content: start; gap: 48px 32px; } }
 
 /* ── xavf: 3 qadam + katta raqam ── */
