@@ -5,8 +5,9 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { altPathFor } from "@/content/altpath";
 import type { Locale } from "@/content/services";
-import { contacts, ui } from "@/content/site";
+import { ui } from "@/content/site";
 import { homePath, sectionPath } from "@/content/routes";
+import Tiles from "./Tiles";
 
 export default function Header({ locale }: { locale: Locale }) {
   const t = ui[locale];
@@ -24,28 +25,24 @@ export default function Header({ locale }: { locale: Locale }) {
     <header className="header">
       <div className="wrap">
         <Link href={homePath(locale)} className="brand">
-          <img src="/mark.png" alt="" width={26} height={27} /> <span>SIFAT</span>BUXGALTER
+          <Tiles className="brand-mark" /> <span>SIFAT</span>&nbsp;BUXGALTER
         </Link>
         <nav className="nav" aria-label="Main">
-          {links.map(([href, label], i) => (
-            <Link key={href} href={href} className={i === 0 ? "nav-pill" : undefined}>
-              {i === 0 && <span className="nav-pill-dot" aria-hidden="true">≡</span>}
+          {links.map(([href, label]) => (
+            <Link key={href} href={href}>
               {label}
             </Link>
           ))}
         </nav>
         <div className="header-right">
-          <a className="header-phone" href={contacts.phone1Href}>
-            {contacts.phone1}
-          </a>
           <Link className="lang" href={altPath} hrefLang={locale === "uz" ? "ru" : "uz"}>
             {t.langSwitch}
           </Link>
-          <Link className="btn btn-primary btn-sm" href={sectionPath(locale, "contact")}>
+          <Link className="btn btn-accent btn-sm" href={sectionPath(locale, "contact")}>
             {t.headerCta}
           </Link>
           <button className="menu-btn" aria-expanded={open} aria-label="Menu" onClick={() => setOpen(!open)}>
-            ☰
+            {open ? "✕" : "☰"}
           </button>
         </div>
       </div>
@@ -55,7 +52,6 @@ export default function Header({ locale }: { locale: Locale }) {
             {label}
           </Link>
         ))}
-        <a href={contacts.phone1Href}>{contacts.phone1}</a>
         <Link href={altPath} hrefLang={locale === "uz" ? "ru" : "uz"} onClick={() => setOpen(false)}>
           {t.langSwitch}
         </Link>

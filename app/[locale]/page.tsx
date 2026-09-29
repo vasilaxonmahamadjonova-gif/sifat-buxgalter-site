@@ -5,9 +5,9 @@ import ClientLogos from "@/components/ClientLogos";
 import CtaSection from "@/components/CtaSection";
 import ReportCard from "@/components/ReportCard";
 import ServiceIcon from "@/components/ServiceIcon";
+import Tiles from "@/components/Tiles";
 import JsonLd, { faqLd } from "@/components/JsonLd";
 import { home } from "@/content/home";
-import { nextMonthLabel } from "@/content/months";
 import { homePath, isLocale, sectionPath, servicePath, siteUrl } from "@/content/routes";
 import { contacts, ui } from "@/content/site";
 
@@ -31,6 +31,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+/** Sarlavhadagi bitta iborani sariq qiladi */
+function Headline({ text, accent }: { text: string; accent?: string }) {
+  if (!accent || !text.includes(accent)) return <>{text}</>;
+  const [a, b] = text.split(accent);
+  return (
+    <>
+      {a}
+      <em>{accent}</em>
+      {b}
+    </>
+  );
+}
+
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="eyebrow">
+      <Tiles /> {children}
+    </div>
+  );
+}
+
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
@@ -39,148 +60,144 @@ export default async function HomePage({ params }: Props) {
 
   return (
     <>
-      {/* HERO */}
+      {/* 1. HERO — to'liq ekran */}
       <section className="hero">
-        <div className="wrap hero-grid">
+        <Tiles className="hero-pattern" />
+        <div className="wrap">
           <div>
-            <div className="badge-live"><i /> {h.badge.replace("{month}", nextMonthLabel(locale))}</div>
-            <div className="eyebrow">{h.hero.eyebrow}</div>
+            <Eyebrow>{h.hero.eyebrow}</Eyebrow>
             <h1>
-              {(() => { const i = h.hero.h1.indexOf(". "); return i > 0 ? (<><span className="h1-muted">{h.hero.h1.slice(0, i + 1)}</span>{h.hero.h1.slice(i + 2)}</>) : h.hero.h1; })()}
+              <Headline text={h.hero.h1} accent={h.hero.h1Accent} />
             </h1>
             <p className="lead">{h.hero.lead}</p>
-            <div className="hero-bottom">
-              <div className="hero-stat"><i>§</i><div><strong>{h.stats[0][0]}</strong><span>{h.stats[0][1]}</span></div></div>
-              <div className="glass">
-                <p className="note">{h.hero.note}</p>
-                <div className="actions">
-                  <a className="btn btn-primary" href="#ariza">
-                    {h.hero.cta}
-                  </a>
-                  <a className="btn btn-ghost" href={contacts.telegram} target="_blank" rel="noopener">
-                    {h.hero.telegram}
-                  </a>
-                </div>
-              </div>
+            <div className="actions">
+              <a className="btn btn-accent" href="#ariza">
+                {h.hero.cta}
+              </a>
+              <a className="btn btn-outline" href={contacts.telegram} target="_blank" rel="noopener">
+                {h.hero.telegram}
+              </a>
             </div>
           </div>
-          <ReportCard s={h.hero.sample} locale={locale} />
+          <div className="hero-side">
+            <ReportCard s={h.hero.sample} locale={locale} />
+          </div>
         </div>
       </section>
 
-      {/* TRIGGERS + 3 QUESTIONS */}
-      <section id="holatlar" className="after-hero">
+      {/* 2. QACHON MUROJAAT QILISHADI — och */}
+      <section id="holatlar" className="light">
         <div className="wrap">
-          <div className="eyebrow">{h.triggers.eyebrow}</div>
-          <h2>{h.triggers.h2}</h2>
-          <ul className="checklist" style={{ marginTop: 24 }}>
+          <div className="head">
+            <div>
+              <Eyebrow>{h.triggers.eyebrow}</Eyebrow>
+              <h2>{h.triggers.h2}</h2>
+            </div>
+          </div>
+          <ul className="trig-grid">
             {h.triggers.items.map((i) => (
               <li key={i}>{i}</li>
             ))}
           </ul>
-          <p className="muted" style={{ marginTop: 20 }}>
-            {h.triggers.note}
-          </p>
-          <div className="check">
-            <div>
-              <h3>{h.check.title}</h3>
-              <p style={{ color: "#e6e0d0", margin: 0 }}>{h.check.intro}</p>
-            </div>
-            <div>
-              <ol>
-                {h.check.questions.map((q) => (
-                  <li key={q.q}>
-                    <span>{q.q}</span>
-                    <span className="why">{q.why}</span>
-                  </li>
-                ))}
-              </ol>
-              <p className="outro-yes">{h.check.outroYes}</p>
-              <p className="outro-no">
-                {h.check.outroNo} <a href="#ariza">{h.check.link}</a>
+          <p className="trig-note">{h.triggers.note}</p>
+        </div>
+      </section>
+
+      {/* 3. 3 SAVOL — to'q */}
+      <section id="savol" className="dark rel">
+        <div className="pattern-bg" aria-hidden="true">
+          <Tiles />
+        </div>
+        <div className="wrap check-grid">
+          <div>
+            <Eyebrow>{h.check.eyebrow}</Eyebrow>
+            <h2>{h.check.title}</h2>
+            <p className="lead">{h.check.intro}</p>
+          </div>
+          <div>
+            <ol className="check-q">
+              {h.check.questions.map((q) => (
+                <li key={q.q}>
+                  <div>
+                    <div className="q">{q.q}</div>
+                    <div className="why">{q.why}</div>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <div className="check-outro">
+              <p className="yes">{h.check.outroYes}</p>
+              <p className="no">
+                {h.check.outroNo}{" "}
+                <a className="link" href="#ariza">
+                  {h.check.link}
+                </a>
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* COMPARE */}
-      <section id="solishtiring" style={{ paddingTop: 0 }}>
-        <div className="wrap">
-          <div className="head3">
-            <div className="eyebrow">{h.compare.eyebrow}</div>
-            <h2>{h.compare.h2}</h2>
-            <p className="lead">{h.compare.lead}</p>
-          </div>
-          <table className="compare">
-            <thead>
-              <tr>
-                <th></th>
-                <th>{h.compare.colNow}</th>
-                <th>{h.compare.colUs}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {h.compare.rows.map(([k, a, b]) => (
-                <tr key={k}>
-                  <td>{k}</td>
-                  <td data-l={h.compare.colNow}>{a}</td>
-                  <td data-l={h.compare.colUs}>{b}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <p style={{ marginTop: 20 }}>
-            {h.compare.note}{" "}
-            <a href="#ariza" className="gold" style={{ fontWeight: 600, textDecoration: "none" }}>
-              →
-            </a>
-          </p>
-        </div>
-      </section>
-
-      <section className="stats-band" style={{ paddingTop: 0 }}>
+      {/* 4. RAQAMLAR — och */}
+      <section className="light" id="raqamlar">
         <div className="wrap">
           <p className="manifest">{h.manifest}</p>
+          <div className="stats">
+            {h.stats.map(([n, l]) => {
+              const m = n.match(/^(\S+)\s*(.*)$/);
+              return (
+                <div className="stat" key={n}>
+                  <strong>
+                    {m ? m[1] : n}
+                    {m && m[2] && <small>{m[2]}</small>}
+                  </strong>
+                  <span>{l}</span>
+                </div>
+              );
+            })}
+          </div>
         </div>
-        <div className="wrap stats">
-          {h.stats.map(([n, l]) => (
-            <div className="stat" key={n}>
-              {(() => { const m = n.match(/^(\d+(?:\/\d+)?)\s*(.*)$/); return m ? (<strong><b data-count={m[1]}>{m[1]}</b>{m[2] && <small>{m[2]}</small>}</strong>) : <strong>{n}</strong>; })()}
-              <span>{l}</span>
+      </section>
+
+      {/* 5. YASHIRIN XAVF — to'q */}
+      <section className="dark" id="xavf">
+        <div className="wrap">
+          <div className="head">
+            <div>
+              <Eyebrow>{h.risk.eyebrow}</Eyebrow>
+              <h2>{h.risk.h2}</h2>
             </div>
-          ))}
+            <p className="lead">{h.risk.intro}</p>
+          </div>
+          <div className="risk-grid">
+            <ol className="risk-steps">
+              {h.risk.steps.map((s) => (
+                <li key={s}>{s}</li>
+              ))}
+            </ol>
+            <div>
+              <div className="risk-big">{h.risk.big}</div>
+              <p className="risk-note">{h.risk.bigNote}</p>
+            </div>
+          </div>
+          <p className="risk-outro">{h.risk.outro}</p>
         </div>
       </section>
 
-      {/* RISK */}
-      <section className="risk" id="xavf">
+      {/* 6. XIZMATLAR — och, bento */}
+      <section id="xizmatlar" className="light">
         <div className="wrap">
-          <div className="eyebrow">{h.risk.eyebrow}</div>
-          <h2>{h.risk.h2}</h2>
-          <p className="lead">{h.risk.intro}</p>
-          <ol className="steps">
-            {h.risk.steps.map((s) => (
-              <li key={s}>{s}</li>
-            ))}
-          </ol>
-          <div className="big">{h.risk.big}</div>
-          <p className="big-note">{h.risk.bigNote}</p>
-          <p className="outro">{h.risk.outro}</p>
-        </div>
-      </section>
-
-      {/* SERVICES */}
-      <section id="xizmatlar">
-        <div className="wrap">
-          <div className="head3">
-            <div className="eyebrow">{h.services.eyebrow}</div>
-            <h2>{h.services.h2}</h2>
+          <div className="head">
+            <div>
+              <Eyebrow>{h.services.eyebrow}</Eyebrow>
+              <h2>{h.services.h2}</h2>
+            </div>
             <p className="lead">{h.services.lead}</p>
           </div>
-          <div className="grid-3" style={{ marginTop: 28 }}>
+          <div className="svc-grid">
             {h.services.groups.map((g) => (
-              <Link key={g.title} href={servicePath(locale, g.id)} className="card card-link">
+              <Link key={g.title} href={servicePath(locale, g.id)} className="svc">
+                <ServiceIcon id={g.id} className="svc-icon" />
                 <h3>{g.title}</h3>
                 <ul>
                   {g.items.map((i) => (
@@ -188,29 +205,30 @@ export default async function HomePage({ params }: Props) {
                   ))}
                 </ul>
                 <div className="more">{t.readMore}</div>
-                <ServiceIcon id={g.id} />
               </Link>
             ))}
-            <Link href={sectionPath(locale, "services")} className="card card-link card-dark" style={{ display: "grid", alignContent: "end", fontWeight: 600, fontSize: 22, minHeight: 200 }}>
-              {h.services.hubLink}
-              <ServiceIcon id="all" />
+            <Link href={sectionPath(locale, "services")} className="svc svc-all">
+              <span>{h.services.hubLink}</span>
+              <Tiles />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* PROMISES */}
-      <section id="majburiyatlar" style={{ paddingTop: 0 }}>
+      {/* 7. MAJBURIYATLAR — to'q */}
+      <section id="majburiyatlar" className="dark">
         <div className="wrap">
-          <div className="head3">
-            <div className="eyebrow">{h.promises.eyebrow}</div>
-            <h2>{h.promises.h2}</h2>
+          <div className="head">
+            <div>
+              <Eyebrow>{h.promises.eyebrow}</Eyebrow>
+              <h2>{h.promises.h2}</h2>
+            </div>
             <p className="lead">{h.promises.lead}</p>
           </div>
           <ol className="promises">
             {h.promises.items.map((p, i) => (
               <li key={p.title}>
-                <div className="num">§ {i + 1}</div>
+                <div className="num">0{i + 1}</div>
                 <div>
                   <h3>{p.title}</h3>
                   <p>{p.text}</p>
@@ -221,48 +239,62 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      {/* PRICING */}
-      <section id="narx" style={{ background: "var(--bg-2)" }}>
+      {/* 8. NARX — och */}
+      <section id="narx" className="light">
         <div className="wrap">
-          <div className="head3">
-            <div className="eyebrow">{h.pricing.eyebrow}</div>
-            <h2>{h.pricing.h2}</h2>
+          <div className="head">
+            <div>
+              <Eyebrow>{h.pricing.eyebrow}</Eyebrow>
+              <h2>{h.pricing.h2}</h2>
+            </div>
             <p className="lead">{h.pricing.intro}</p>
           </div>
-          <div className="grid-4" style={{ marginTop: 28 }}>
+          <div className="price-grid">
             {h.pricing.cards.map((c) => (
               <div className="card" key={c.title}>
                 <h3>{c.title}</h3>
-                <p style={{ margin: 0, color: "var(--ink-2)", fontSize: 15 }}>{c.text}</p>
+                <p>{c.text}</p>
               </div>
             ))}
           </div>
-          <p style={{ marginTop: 24 }}>
-            <a href="#ariza" className="gold" style={{ fontWeight: 600, textDecoration: "none" }}>
+          <div className="price-links">
+            <a href="#ariza" className="btn btn-accent">
               {h.pricing.cta}
             </a>
-            {" · "}
-            <Link href={sectionPath(locale, "pricing")}>{t.pricingLink}</Link>
-          </p>
+            <Link className="link" href={sectionPath(locale, "pricing")}>
+              {t.pricingLink}
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* WHO */}
-      <section id="kimga">
+      {/* 9. KIMGA — to'q */}
+      <section id="kimga" className="dark rel">
+        <div className="pattern-bg" aria-hidden="true">
+          <Tiles />
+        </div>
         <div className="wrap">
-          <div className="eyebrow">{h.who.eyebrow}</div>
-          <h2>{h.who.h2}</h2>
-          <div className="who">
-            <div className="card yes">
-              <h3>{h.who.yesTitle}</h3>
+          <div className="head">
+            <div>
+              <Eyebrow>{h.who.eyebrow}</Eyebrow>
+              <h2>{h.who.h2}</h2>
+            </div>
+          </div>
+          <div className="who-grid">
+            <div className="who-col yes">
+              <h3>
+                <i /> {h.who.yesTitle}
+              </h3>
               <ul>
                 {h.who.yes.map((i) => (
                   <li key={i}>{i}</li>
                 ))}
               </ul>
             </div>
-            <div className="card no">
-              <h3>{h.who.noTitle}</h3>
+            <div className="who-col no">
+              <h3>
+                <i /> {h.who.noTitle}
+              </h3>
               <ul>
                 {h.who.no.map((i) => (
                   <li key={i}>{i}</li>
@@ -270,86 +302,90 @@ export default async function HomePage({ params }: Props) {
               </ul>
             </div>
           </div>
-          <p className="muted" style={{ marginTop: 18 }}>
-            {h.who.note}
-          </p>
+          <p className="who-note">{h.who.note}</p>
         </div>
       </section>
 
-      {/* PROCESS */}
-      <section id="jarayon" style={{ paddingTop: 0 }}>
+      {/* 10. JARAYON — och */}
+      <section id="jarayon" className="light">
         <div className="wrap">
-          <div className="eyebrow">{h.process.eyebrow}</div>
-          <h2>{h.process.h2}</h2>
-          <ol className="process five" style={{ marginTop: 28 }}>
+          <div className="head">
+            <div>
+              <Eyebrow>{h.process.eyebrow}</Eyebrow>
+              <h2>{h.process.h2}</h2>
+            </div>
+          </div>
+          <ol className="process">
             {h.process.steps.map((st) => (
               <li key={st.title}>
-                <h3>{st.title}</h3>
-                <p>{st.text}</p>
+                <div>
+                  <h3>{st.title}</h3>
+                  <p>{st.text}</p>
+                </div>
               </li>
             ))}
           </ol>
         </div>
       </section>
 
-      {/* TEAM */}
-      <section id="jamoa" style={{ paddingTop: 0 }}>
+      {/* 11. JAMOA — to'q */}
+      <section id="jamoa" className="dark">
         <div className="wrap">
-          <div className="eyebrow">{h.team.eyebrow}</div>
-          <h2>{h.team.h2}</h2>
-          <div className="grid-2 team-solo" style={{ marginTop: 24 }}>
-            {h.team.people.slice(0, 1).map((p) => (
-              <div className="card person" key={p.name}>
-                <div className="avatar">{p.initial}</div>
-                <div>
-                  <div className="role">{p.role}</div>
-                  <h3>{p.name}</h3>
-                  <ul>
-                    {p.facts.map((f) => (
-                      <li key={f}>{f}</li>
-                    ))}
-                  </ul>
-                </div>
+          <div className="head">
+            <div>
+              <Eyebrow>{h.team.eyebrow}</Eyebrow>
+              <h2>{h.team.h2}</h2>
+            </div>
+          </div>
+          <div className="team-grid">
+            {h.team.people.map((p) => (
+              <div className="person" key={p.name}>
+                <div className="role">{p.role}</div>
+                <h3>{p.name}</h3>
+                <ul>
+                  {p.facts.map((f) => (
+                    <li key={f}>{f}</li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CLIENTS */}
-      <section id="tajriba" style={{ paddingTop: 0 }}>
+      {/* 12. MIJOZLAR — och */}
+      <section id="tajriba" className="light">
         <div className="wrap">
-          <div className="head3">
-            <div className="eyebrow">{h.clients.eyebrow}</div>
-            <h2>{h.clients.h2}</h2>
+          <div className="head">
+            <div>
+              <Eyebrow>{h.clients.eyebrow}</Eyebrow>
+              <h2>{h.clients.h2}</h2>
+            </div>
             <p className="lead">{h.clients.lead}</p>
           </div>
           <ClientLogos />
         </div>
       </section>
 
-      {/* FAQ */}
-      <section id="savollar" style={{ paddingTop: 0 }}>
-        <div className="wrap faq">
-          <div className="eyebrow">{h.faq.eyebrow}</div>
-          <h2>{h.faq.h2}</h2>
-          {h.faq.items.map((f) => (
-            <details key={f.q}>
-              <summary>{f.q}</summary>
-              <p>{f.a}</p>
-            </details>
-          ))}
+      {/* 13. SAVOLLAR — to'q */}
+      <section id="savollar" className="dark">
+        <div className="wrap faq-grid">
+          <div>
+            <Eyebrow>{h.faq.eyebrow}</Eyebrow>
+            <h2>{h.faq.h2}</h2>
+          </div>
+          <div className="faq">
+            {h.faq.items.map((f) => (
+              <details key={f.q}>
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="ask">
-        <div className="wrap">
-          <h2>{h.ask.h2}</h2>
-          <p className="lead">{h.ask.text}</p>
-          <a className="btn btn-gold" href="#ariza">{h.ask.cta}</a>
-        </div>
-      </section>
-
+      {/* 14. ARIZA — och */}
       <CtaSection locale={locale} eyebrow={h.cta.eyebrow} source="home" />
       <JsonLd data={faqLd(h.faq.items)} />
     </>

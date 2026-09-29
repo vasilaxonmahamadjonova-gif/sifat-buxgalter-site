@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import Reveal from "@/components/Reveal";
 import JsonLd from "@/components/JsonLd";
 import { isLocale, locales, siteUrl } from "@/content/routes";
 import { contacts, ui } from "@/content/site";
@@ -11,7 +10,7 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export const viewport: Viewport = { themeColor: "#050505" };
+export const viewport: Viewport = { themeColor: "#1B1B27" };
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -47,11 +46,6 @@ export default async function LocaleLayout({ children, params }: { children: Rea
 
   return (
     <html lang={locale}>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-      </head>
       <body>
         <a href="#main" className="skip">
           {t.skip}
@@ -59,7 +53,6 @@ export default async function LocaleLayout({ children, params }: { children: Rea
         <Header locale={locale} />
         <main id="main">{children}</main>
         <Footer locale={locale} />
-        <Reveal />
         <JsonLd data={business} />
         {gaId && (
           <>

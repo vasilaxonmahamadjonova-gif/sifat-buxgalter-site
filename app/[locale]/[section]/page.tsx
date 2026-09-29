@@ -9,6 +9,7 @@ import { contactExtra, pages, pricingIncluded, privacyText, servicesRouter, than
 import { homePath, isLocale, kindFromSection, locales, sectionPath, sections, servicePath, siteUrl, type PageKind } from "@/content/routes";
 import { serviceOrder, services } from "@/content/services";
 import { contacts, ui } from "@/content/site";
+import Tiles from "@/components/Tiles";
 
 type Props = { params: Promise<{ locale: string; section: string }> };
 
@@ -47,7 +48,9 @@ function Hero({ locale, kind }: { locale: "uz" | "ru"; kind: PageKind }) {
           <span>›</span>
           {p.eyebrow.split("·")[0].trim()}
         </div>
-        <div className="eyebrow">{p.eyebrow}</div>
+        <div className="eyebrow">
+          <Tiles /> {p.eyebrow}
+        </div>
         <h1>{p.h1}</h1>
         <p className="lead">{p.lead}</p>
       </div>
@@ -73,10 +76,17 @@ export default async function SectionPage({ params }: Props) {
     return (
       <>
         <Hero locale={locale} kind={kind} />
-        <section className="section-tight">
+        <section className="light">
           <div className="wrap">
-            <div className="eyebrow">{r.title}</div>
-            <p className="lead" style={{ marginBottom: 20 }}>{r.lead}</p>
+            <div className="head">
+              <div>
+                <div className="eyebrow">
+                  <Tiles /> {r.title}
+                </div>
+                <h2>{r.title}</h2>
+              </div>
+              <p className="lead">{r.lead}</p>
+            </div>
             <div className="router">
               {r.items.map((it) => (
                 <Link key={it.id} href={servicePath(locale, it.id)} className="router-item">
@@ -88,22 +98,29 @@ export default async function SectionPage({ params }: Props) {
             </div>
           </div>
         </section>
-        <section className="section-tight" style={{ paddingTop: 0 }}>
-          <div className="wrap grid-3">
-            {serviceOrder.map((id) => {
-              const s = services[locale][id];
-              return (
-                <Link key={id} href={servicePath(locale, id)} className="card card-link">
-                  <div className="eyebrow" style={{ marginBottom: 8 }}>
-                    {s.eyebrow}
-                  </div>
-                  <h3>{s.title.split(/ — |: |, /)[0].trim()}</h3>
-                  <p style={{ margin: "0 0 8px", fontWeight: 600 }}>{s.h1}</p>
-                  <p style={{ margin: 0, color: "var(--ink-2)", fontSize: 15 }}>{s.lead.split(". ")[0]}.</p>
-                  <div className="more">{t.readMore}</div>
-                </Link>
-              );
-            })}
+        <section className="dark">
+          <div className="wrap">
+            <div className="head">
+              <div>
+                <div className="eyebrow">
+                  <Tiles /> {t.allServices}
+                </div>
+                <h2>{h.services.h2}</h2>
+              </div>
+            </div>
+            <div className="router">
+              {serviceOrder.map((id) => {
+                const s = services[locale][id];
+                return (
+                  <Link key={id} href={servicePath(locale, id)} className="router-item">
+                    <span className="related-name">{s.title.split(/ — |: |, /)[0].trim()}</span>
+                    <span className="router-q">{s.h1}</span>
+                    <span className="router-a">{s.lead.split(". ")[0]}.</span>
+                    <span className="more">{t.readMore}</span>
+                  </Link>
+                );
+              })}
+            </div>
           </div>
         </section>
         <CtaSection locale={locale} eyebrow={h.cta.eyebrow} source="services-hub" />
@@ -116,45 +133,39 @@ export default async function SectionPage({ params }: Props) {
     return (
       <>
         <Hero locale={locale} kind={kind} />
-        <section className="section-tight">
+        <section className="light">
           <div className="wrap">
-            <div className="grid-4">
+            <div className="price-grid">
               {h.pricing.cards.map((c) => (
                 <div className="card" key={c.title}>
                   <h3>{c.title}</h3>
-                  <p style={{ margin: 0, color: "var(--ink-2)", fontSize: 15 }}>{c.text}</p>
+                  <p>{c.text}</p>
                 </div>
               ))}
             </div>
-            <div className="included">
-              <h2 style={{ fontSize: 28 }}>{pricingIncluded[locale].title}</h2>
-              <ul className="checklist">
-                {pricingIncluded[locale].items.map((i) => (
-                  <li key={i}>{i}</li>
-                ))}
-              </ul>
-              <p className="muted" style={{ marginTop: 14, fontSize: 15 }}>{pricingIncluded[locale].note}</p>
+          </div>
+        </section>
+        <section className="dark">
+          <div className="wrap">
+            <div className="head">
+              <div>
+                <h2>{pricingIncluded[locale].title}</h2>
+              </div>
+              <p className="lead">{pricingIncluded[locale].note}</p>
             </div>
-            <table className="compare">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>{h.compare.colNow}</th>
-                  <th>{h.compare.colUs}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {h.compare.rows.slice(-4).map(([k, a, b]) => (
-                  <tr key={k}>
-                    <td>{k}</td>
-                    <td data-l={h.compare.colNow}>{a}</td>
-                    <td data-l={h.compare.colUs}>{b}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <div className="faq" style={{ marginTop: 40 }}>
+            <ul className="checklist">
+              {pricingIncluded[locale].items.map((i) => (
+                <li key={i}>{i}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
+        <section className="light">
+          <div className="wrap faq-grid">
+            <div>
               <h2>{h.faq.h2}</h2>
+            </div>
+            <div className="faq faq-light">
               {h.faq.items.slice(-2).map((f) => (
                 <details key={f.q} open>
                   <summary>{f.q}</summary>
@@ -175,45 +186,59 @@ export default async function SectionPage({ params }: Props) {
     return (
       <>
         <Hero locale={locale} kind={kind} />
-        <section className="section-tight">
+        <section className="dark">
           <div className="wrap">
-            <div className="grid-2">
+            <div className="team-grid">
               {h.team.people.map((pp) => (
-                <div className="card person" key={pp.name}>
-                  <div className="avatar">{pp.initial}</div>
-                  <div>
-                    <div className="role">{pp.role}</div>
-                    <h3>{pp.name}</h3>
-                    <ul>
-                      {pp.facts.map((f) => (
-                        <li key={f}>{f}</li>
-                      ))}
-                    </ul>
-                  </div>
+                <div className="person" key={pp.name}>
+                  <div className="role">{pp.role}</div>
+                  <h3>{pp.name}</h3>
+                  <ul>
+                    {pp.facts.map((f) => (
+                      <li key={f}>{f}</li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
-            <div style={{ marginTop: 40 }}>
-              <div className="eyebrow">{h.promises.eyebrow}</div>
-              <h2>{h.promises.h2}</h2>
-              <ol className="promises">
-                {h.promises.items.map((pr, i) => (
-                  <li key={pr.title}>
-                    <div className="num">§ {i + 1}</div>
-                    <div>
-                      <h3>{pr.title}</h3>
-                      <p>{pr.text}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
+          </div>
+        </section>
+        <section className="light">
+          <div className="wrap">
+            <div className="head">
+              <div>
+                <div className="eyebrow">
+                  <Tiles /> {h.promises.eyebrow}
+                </div>
+                <h2>{h.promises.h2}</h2>
+              </div>
+              <p className="lead">{h.promises.lead}</p>
             </div>
-            <div style={{ marginTop: 40 }}>
-              <div className="eyebrow">{h.clients.eyebrow}</div>
-              <h2>{h.clients.h2}</h2>
+            <ol className="promises promises-light">
+              {h.promises.items.map((pr, i) => (
+                <li key={pr.title}>
+                  <div className="num">0{i + 1}</div>
+                  <div>
+                    <h3>{pr.title}</h3>
+                    <p>{pr.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+        <section className="dark">
+          <div className="wrap">
+            <div className="head">
+              <div>
+                <div className="eyebrow">
+                  <Tiles /> {h.clients.eyebrow}
+                </div>
+                <h2>{h.clients.h2}</h2>
+              </div>
               <p className="lead">{h.clients.lead}</p>
-              <ClientLogos />
             </div>
+            <ClientLogos />
           </div>
         </section>
         <CtaSection locale={locale} eyebrow={h.cta.eyebrow} source="team" />
@@ -230,8 +255,8 @@ export default async function SectionPage({ params }: Props) {
     return (
       <>
         <Hero locale={locale} kind={kind} />
-        <section className="section-tight">
-          <div className="wrap faq">
+        <section className="light">
+          <div className="wrap faq faq-light" style={{ maxWidth: 900 }}>
             {all.map((f) => (
               <details key={f.q}>
                 <summary>{f.q}</summary>
@@ -253,29 +278,37 @@ export default async function SectionPage({ params }: Props) {
       <>
         <Hero locale={locale} kind={kind} />
         <CtaSection locale={locale} eyebrow={h.cta.eyebrow} source="contact" />
-        <section className="section-tight">
+        <section className="dark">
           <div className="wrap">
-            <h2 style={{ fontSize: 28 }}>{c.title}</h2>
-            <ol className="process">
+            <div className="head">
+              <div>
+                <h2>{c.title}</h2>
+              </div>
+              <p className="lead">{c.noSale}</p>
+            </div>
+            <ol className="process process-dark">
               {c.steps.map((st) => (
                 <li key={st.t}>
-                  <h3>{st.t}</h3>
-                  <p>{st.d}</p>
+                  <div>
+                    <h3>{st.t}</h3>
+                    <p>{st.d}</p>
+                  </div>
                 </li>
               ))}
             </ol>
-            <p className="muted" style={{ marginTop: 16, maxWidth: 720 }}>{c.noSale}</p>
           </div>
         </section>
-        <section className="section-tight" style={{ paddingTop: 0 }}>
+        <section className="light">
           <div className="wrap grid-2">
             <div className="card">
               <h3>{t.footer.office}</h3>
-              <p style={{ margin: 0 }}>{t.footer.address}</p>
+              <p>{t.footer.address}</p>
               {t.footer.landmark && <p className="muted">{t.footer.landmark}</p>}
-              <a href={contacts.map} target="_blank" rel="noopener">
-                {t.footer.mapLink}
-              </a>
+              <p style={{ marginTop: 16 }}>
+                <a className="link" href={contacts.map} target="_blank" rel="noopener">
+                  {t.footer.mapLink}
+                </a>
+              </p>
             </div>
             <div className="card">
               <h3>{t.footer.contact}</h3>
@@ -283,13 +316,13 @@ export default async function SectionPage({ params }: Props) {
                 <a href={contacts.phone1Href}>{contacts.phone1}</a>
                 <a href={contacts.phone2Href}>{contacts.phone2}</a>
               </div>
+              <p style={{ marginTop: 16 }}>
+                <a className="link" href={contacts.telegram}>Telegram {contacts.telegramHandle}</a>
+              </p>
               <p style={{ marginTop: 10 }}>
-                <a href={contacts.telegram}>Telegram {contacts.telegramHandle}</a> ·{" "}
-                <a href={contacts.instagram}>Instagram @sifatbuxgalter</a>
+                <a className="link" href={contacts.instagram}>Instagram @sifatbuxgalter</a>
               </p>
-              <p className="muted" style={{ margin: 0 }}>
-                {t.footer.online}
-              </p>
+              <p className="muted" style={{ marginTop: 16 }}>{t.footer.online}</p>
             </div>
           </div>
         </section>
@@ -302,7 +335,7 @@ export default async function SectionPage({ params }: Props) {
     return (
       <>
         <Hero locale={locale} kind={kind} />
-        <section className="section-tight prose">
+        <section className="light prose">
           <div className="wrap">
             {privacyText[locale].map((line) => (
               <p key={line}>{line}</p>
@@ -318,7 +351,7 @@ export default async function SectionPage({ params }: Props) {
   return (
     <>
       <Hero locale={locale} kind={kind} />
-      <section className="section-tight">
+      <section className="light">
         <div className="wrap">
           <div className="card" style={{ maxWidth: 640 }}>
             <h3>{th.title}</h3>
@@ -328,13 +361,13 @@ export default async function SectionPage({ params }: Props) {
               ))}
             </ol>
           </div>
-          <p className="muted" style={{ marginTop: 28, marginBottom: 6 }}>{th.telegram}</p>
+          <p className="muted" style={{ marginTop: 40, marginBottom: 6 }}>{th.telegram}</p>
           <div className="phones">
             <a href={contacts.phone1Href}>{contacts.phone1}</a>
             <a href={contacts.telegram}>Telegram {contacts.telegramHandle}</a>
           </div>
-          <p style={{ marginTop: 24 }}>
-            <Link className="btn btn-ghost" href={homePath(locale)}>
+          <p style={{ marginTop: 32 }}>
+            <Link className="btn btn-outline" href={homePath(locale)}>
               ← {t.breadcrumbHome}
             </Link>
           </p>

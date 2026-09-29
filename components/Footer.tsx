@@ -3,19 +3,21 @@ import type { Locale } from "@/content/services";
 import { services, serviceOrder } from "@/content/services";
 import { contacts, ui } from "@/content/site";
 import { homePath, sectionPath, servicePath } from "@/content/routes";
+import Tiles from "./Tiles";
 
 export default function Footer({ locale }: { locale: Locale }) {
   const t = ui[locale];
   const top = serviceOrder.slice(0, 6);
   return (
     <footer className="footer">
-      <div className="wrap">
+      <div className="pattern-bg" aria-hidden="true">
+        <Tiles />
+      </div>
+      <div className="wrap" style={{ position: "relative" }}>
         <Link href={homePath(locale)} className="brand">
-          <img src="/mark.png" alt="" width={26} height={27} /> <span>SIFAT</span>BUXGALTER
+          <Tiles className="brand-mark" /> <span>SIFAT</span>&nbsp;BUXGALTER
         </Link>
-        <div className="muted" style={{ marginTop: 6 }}>
-          {t.footer.online}
-        </div>
+        <div className="online">{t.footer.online}</div>
         <div className="footer-grid">
           <div>
             <h4>{t.footer.office}</h4>

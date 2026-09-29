@@ -7,6 +7,7 @@ import { home } from "@/content/home";
 import { homePath, isLocale, kindFromSection, locales, sectionPath, serviceIdFromSlug, servicePath, siteUrl } from "@/content/routes";
 import { serviceOrder, services, serviceSlugs, servicesBase } from "@/content/services";
 import { contacts, ui } from "@/content/site";
+import Tiles from "@/components/Tiles";
 
 type Props = { params: Promise<{ locale: string; section: string; slug: string }> };
 
@@ -69,44 +70,46 @@ export default async function ServicePage({ params }: Props) {
             <span>›</span>
             {s.eyebrow.split("·")[0].trim()}
           </div>
-          <div className="eyebrow">{s.eyebrow}</div>
+          <div className="eyebrow">
+            <Tiles /> {s.eyebrow}
+          </div>
           <h1>
             {s.h1}
             {s.urgent && <span className="urgent">{locale === "uz" ? "shoshilinch" : "срочно"}</span>}
           </h1>
           <p className="lead">{s.lead}</p>
           <div className="actions">
-            <a className={"btn " + (s.urgent ? "btn-gold" : "btn-primary")} href="#ariza">
+            <a className="btn btn-accent" href="#ariza">
               {s.cta}
             </a>
-            <a className="btn btn-ghost" href={contacts.telegram} target="_blank" rel="noopener">
+            <a className="btn btn-outline" href={contacts.telegram} target="_blank" rel="noopener">
               Telegram
             </a>
             {s.urgent && (
-              <a className="btn btn-ghost" href={contacts.phone1Href}>
+              <a className="btn btn-outline" href={contacts.phone1Href}>
                 {contacts.phone1}
               </a>
             )}
           </div>
-          <p className="muted" style={{ maxWidth: 600, fontSize: 15 }}>
+          <p className="muted" style={{ maxWidth: 600, fontSize: 15, marginTop: 20 }}>
             {s.ctaNote}
           </p>
         </div>
       </section>
 
-      <section className="section-tight">
+      <section className="light">
         <div className="wrap grid-2">
           <div className="card">
-            <h2 style={{ fontSize: 24 }}>{s.forWhomTitle}</h2>
-            <ul>
+            <h3>{s.forWhomTitle}</h3>
+            <ul className="checklist checklist-1">
               {s.forWhom.map((i) => (
                 <li key={i}>{i}</li>
               ))}
             </ul>
           </div>
           <div className="card">
-            <h2 style={{ fontSize: 24 }}>{s.includesTitle}</h2>
-            <ul>
+            <h3>{s.includesTitle}</h3>
+            <ul className="checklist checklist-1">
               {s.includes.map((i) => (
                 <li key={i}>{i}</li>
               ))}
@@ -115,27 +118,37 @@ export default async function ServicePage({ params }: Props) {
         </div>
       </section>
 
-      <section className="section-tight">
+      <section className="dark">
         <div className="wrap">
-          <h2>{s.processTitle}</h2>
-          <ol className={"process" + (s.process.length === 4 ? " four" : "")}>
+          <div className="head">
+            <div>
+              <h2>{s.processTitle}</h2>
+            </div>
+          </div>
+          <ol className="process process-dark">
             {s.process.map((p) => (
               <li key={p.title}>
-                <h3>{p.title}</h3>
-                <p>{p.text}</p>
+                <div>
+                  <h3>{p.title}</h3>
+                  <p>{p.text}</p>
+                </div>
               </li>
             ))}
           </ol>
         </div>
       </section>
 
-      <section className="section-tight" style={{ background: "var(--bg-2)" }}>
+      <section className="light">
         <div className="wrap">
-          <h2>{s.whyTitle}</h2>
-          <ol className="promises" style={{ marginTop: 20 }}>
+          <div className="head">
+            <div>
+              <h2>{s.whyTitle}</h2>
+            </div>
+          </div>
+          <ol className="promises promises-light">
             {s.why.map((w, i) => (
               <li key={w.title}>
-                <div className="num">§ {i + 1}</div>
+                <div className="num">0{i + 1}</div>
                 <div>
                   <h3>{w.title}</h3>
                   <p>{w.text}</p>
@@ -146,15 +159,14 @@ export default async function ServicePage({ params }: Props) {
         </div>
       </section>
 
-      <section className="section-tight">
-        <div className="wrap grid-2">
+      <section className="dark">
+        <div className="wrap faq-grid">
           <div>
             <h2>{s.priceTitle}</h2>
-            <p className="lead">{s.price}</p>
-            <Link href={sectionPath(locale, "pricing")}>{t.pricingLink}</Link>
+            <p className="lead" style={{ margin: "24px 0 32px" }}>{s.price}</p>
+            <Link className="link" href={sectionPath(locale, "pricing")}>{t.pricingLink}</Link>
           </div>
           <div className="faq">
-            <h2 style={{ fontSize: 24 }}>FAQ</h2>
             {s.faq.map((f) => (
               <details key={f.q}>
                 <summary>{f.q}</summary>
@@ -165,9 +177,13 @@ export default async function ServicePage({ params }: Props) {
         </div>
       </section>
 
-      <section className="section-tight">
+      <section className="light">
         <div className="wrap">
-          <h2 style={{ fontSize: 24 }}>{t.relatedTitle}</h2>
+          <div className="head">
+            <div>
+              <h2>{t.relatedTitle}</h2>
+            </div>
+          </div>
           <div className="related">
             {s.related.map((rid) => (
               <Link key={rid} href={servicePath(locale, rid)}>
@@ -176,8 +192,8 @@ export default async function ServicePage({ params }: Props) {
               </Link>
             ))}
           </div>
-          <p style={{ marginTop: 16 }}>
-            <Link href={sectionPath(locale, "services")}>{t.allServices} →</Link>
+          <p style={{ marginTop: 40 }}>
+            <Link className="link" href={sectionPath(locale, "services")}>{t.allServices} →</Link>
           </p>
         </div>
       </section>

@@ -5,53 +5,53 @@ export type StaticPage = { title: string; description: string; eyebrow: string; 
 export const pages: Record<Locale, Record<"services" | "pricing" | "team" | "faq" | "contact" | "privacy" | "thanks", StaticPage>> = {
   uz: {
     services: {
-      title: "Buxgalteriya xizmatlari Toshkent — Sifat Buxgalter",
-      description: "MChJ uchun buxgalteriya xizmatlari: hisob va hisobotlar, soliqni kamaytirish, tekshiruv va nizolar, kadrlar, tashqi savdo. Bitta shartnoma, 10 daqiqada javob. Toshkent.",
+      title: "Buxgalteriya xizmatlari, Toshkent | Sifat Buxgalter",
+      description: "MChJ uchun buxgalteriya xizmatlari: hisob va hisobotlar, soliqni kamaytirish, tekshiruv va nizolar, kadrlar, tashqi savdo. Bitta shartnoma, savolga 10 daqiqada javob. Toshkent.",
       eyebrow: "Xizmatlar · Toshkent",
-      h1: "Buxgalteriyaning hammasi — bitta shartnomada",
-      lead: "Har bir xizmat haqida alohida sahifa: kimga kerak, nima kiradi, qanday ishlaymiz, narx. Nimadan boshlashni bilmasangiz — ekspress-auditdan boshlaymiz.",
+      h1: "Butun buxgalteriya bitta shartnomada",
+      lead: "Har bir xizmat uchun alohida sahifa: kimga kerak, nima kiradi, qanday ishlaymiz, narxi qancha. Nimadan boshlashni bilmasangiz, ekspress-auditdan boshlaymiz.",
     },
     pricing: {
-      title: "Buxgalteriya xizmati narxi — Toshkent",
-      description: "Buxgalteriya autsorsingi narxi hujjat hajmiga bogʻliq, aylanmaga emas. Tejalgan soliqdan foiz yoʻq, yashirin toʻlovlar yoʻq. Aniq raqam — birinchi qoʻngʻiroqda.",
+      title: "Buxgalteriya xizmati narxi, Toshkent",
+      description: "Buxgalteriya xizmati narxi hujjatlar hajmiga bogʻliq, aylanmaga emas. Tejalgan soliqdan foiz olmaymiz, yashirin toʻlovlar yoʻq. Aniq raqamni birinchi suhbatda aytamiz.",
       eyebrow: "Narx",
       h1: "Narx aylanmaga emas, ish hajmiga bogʻliq",
-      lead: "Tayyor tarif yoʻq — va bu ataylab. Narxni oylik hujjat hajmi belgilaydi: hisob-fakturalar, toʻlovlar, xodimlar, kontragentlar soni.",
+      lead: "Tayyor tariflar yoʻq, bu ataylab shunday. Narxni oylik hujjatlar hajmi belgilaydi: hisob-fakturalar, toʻlovlar, xodimlar va kontragentlar soni.",
     },
     team: {
-      title: "Jamoa — Sifat Buxgalter",
-      description: "Hisobingizni kim yuritadi: 2016-yildan ishlayotgan bosh buxgalter Ibrohim va mijozlar bilan ishlovchi Bekzod. Toshkent.",
+      title: "Jamoa | Sifat Buxgalter",
+      description: "Hisobingizni kim yuritadi: 2016-yildan beri ishlayotgan bosh buxgalter Ibrohim va mijozlar bilan ishlaydigan Bekzod. Toshkent.",
       eyebrow: "Jamoa",
       h1: "Hisobingizni kim yuritadi",
-      lead: "Katta jamoa emas — va bu ataylab. Kam kompaniya olamiz, har birini bosh buxgalter shaxsan yuritadi.",
+      lead: "Jamoamiz katta emas, bu ataylab shunday. Kam kompaniya olamiz, har birining hisobini bosh buxgalter shaxsan yuritadi.",
     },
     faq: {
-      title: "Koʻp soʻraladigan savollar — Sifat Buxgalter",
-      description: "Buxgalteriya autsorsingi haqida koʻp soʻraladigan savollar: narx, buxgalter bilan nima qilish, xavfsizlik, ofisga tashrif, dam olish kunlari.",
+      title: "Koʻp beriladigan savollar | Sifat Buxgalter",
+      description: "Buxgalteriya xizmati haqida koʻp beriladigan savollar: narx, hozirgi buxgalter bilan nima qilish, xavfsizlik, ofisga tashrif, dam olish kunlari.",
       eyebrow: "Savollar",
-      h1: "Koʻp soʻraladi",
-      lead: "Bu yerda javob topolmasangiz — Bekzodga Telegramda yozing, 10 daqiqada javob beradi.",
+      h1: "Koʻp beriladigan savollar",
+      lead: "Bu yerda javob topolmasangiz, Bekzodga Telegramda yozing. Tez javob beradi.",
     },
     contact: {
-      title: "Aloqa — Sifat Buxgalter, Toshkent",
+      title: "Aloqa | Sifat Buxgalter, Toshkent",
       description: "Sifat Buxgalter bilan bogʻlaning: +998 97 732 18 48, Telegram @Davronbekov_Bekzod. Ofis: Toshkent, Yakkasaroy, Muqimiy koʻchasi. 24/7.",
       eyebrow: "Aloqa",
-      h1: "Bitta qoʻngʻiroq — va siz hisobingizda qayerda pul yoʻqotayotganingizni bilasiz",
-      lead: "Bu sotuv qoʻngʻirogʻi emas. Bekzod hisobingiz haqida ikki-uch savol beradi va birinchi navbatda nimani tekshirish kerakligini aytadi. Keyin qaror — sizniki.",
+      h1: "Bitta suhbat va siz hisobingizda pul qayerda yoʻqolayotganini bilasiz",
+      lead: "Bu sotuv qoʻngʻirogʻi emas. Bekzod hisobingiz haqida ikki-uchta savol beradi va birinchi navbatda nimani tekshirish kerakligini aytadi. Keyingi qaror sizniki.",
     },
     privacy: {
-      title: "Maxfiylik siyosati — Sifat Buxgalter",
+      title: "Maxfiylik siyosati | Sifat Buxgalter",
       description: "Sifat Buxgalter sayti orqali yuborilgan maʼlumotlar qanday ishlatiladi va saqlanadi.",
       eyebrow: "Maxfiylik",
       h1: "Maxfiylik siyosati",
       lead: "Sayt orqali yuborgan maʼlumotlaringiz faqat siz bilan bogʻlanish uchun ishlatiladi.",
     },
     thanks: {
-      title: "Rahmat — Sifat Buxgalter",
+      title: "Rahmat | Sifat Buxgalter",
       description: "Arizangiz qabul qilindi.",
       eyebrow: "Ariza qabul qilindi",
       h1: "Rahmat. Bekzod tez orada qoʻngʻiroq qiladi",
-      lead: "10 daqiqa ichida bogʻlanamiz. Qoʻngʻiroq foydali oʻtishi uchun uchta narsani eslab qoʻying — ular haqida soʻraymiz.",
+      lead: "Tez orada bogʻlanamiz. Suhbat foydali oʻtishi uchun uchta narsani eslab qoʻying, ular haqida soʻraymiz.",
     },
   },
   ru: {
@@ -109,13 +109,13 @@ export const pages: Record<Locale, Record<"services" | "pricing" | "team" | "faq
 
 export const contactExtra: Record<Locale, { title: string; steps: { t: string; d: string }[]; noSale: string }> = {
   uz: {
-    title: "10 daqiqada nima boʻladi",
+    title: "Suhbatda nima boʻladi",
     steps: [
-      { t: "3 ta savol", d: "Oyiga nechta hisob-faktura, ombor qanday yuritiladi, oxirgi tekshiruv qachon boʻlgan. Hujjat kerak emas." },
-      { t: "Birinchi xavf", d: "Sizning holatingizda pul odatda qayerda yoʻqoladi — imtiyoz, ombor yoki kechikkan hisobot. Shuni aytamiz." },
-      { t: "Narx va keyingi qadam", d: "Hajmni eshitib, taxminiy narxni shu qoʻngʻiroqda aytamiz. Mos kelmasa — shuni ham ochiq aytamiz." },
+      { t: "Uchta savol", d: "Oyiga nechta hisob-faktura oʻtadi, ombor qanday yuritiladi, oxirgi tekshiruv qachon boʻlgan. Hujjat kerak emas." },
+      { t: "Birinchi xavf", d: "Sizning holatingizda pul odatda qayerda yoʻqoladi: imtiyoz, ombor yoki kechikkan hisobot. Shuni toʻgʻridan-toʻgʻri aytamiz." },
+      { t: "Narx va keyingi qadam", d: "Hajmni eshitib, taxminiy narxni shu suhbatda aytamiz. Mos kelmasak, buni ham ochiq aytamiz." },
     ],
-    noSale: "Uchrashuv, taqdimot, «keyin qoʻngʻiroq qilamiz» yoʻq. Qoʻngʻiroqdan keyin siz qaror qilasiz, biz qayta bezovta qilmaymiz.",
+    noSale: "Uchrashuv, taqdimot va «keyin qoʻngʻiroq qilamiz» yoʻq. Suhbatdan keyin siz qaror qilasiz, biz qayta bezovta qilmaymiz.",
   },
   ru: {
     title: "Что будет за 10 минут",
@@ -130,13 +130,13 @@ export const contactExtra: Record<Locale, { title: string; steps: { t: string; d
 
 export const thanksExtra: Record<Locale, { title: string; items: string[]; telegram: string }> = {
   uz: {
-    title: "Qoʻngʻiroqqacha eslab qoʻying",
+    title: "Suhbatgacha eslab qoʻying",
     items: [
       "Oyiga taxminan nechta hisob-faktura va toʻlov oʻtadi",
-      "Ombor qayerda yuritiladi — 1C, Excel yoki daftar",
+      "Ombor qayerda yuritiladi: 1C, Excel yoki daftar",
       "Oxirgi soliq tekshiruvi yoki talabnoma qachon kelgan",
     ],
-    telegram: "Shoshilinch boʻlsa (tekshiruv, bloklangan hisob) — kutmang, hoziroq yozing:",
+    telegram: "Shoshilinch boʻlsa (tekshiruv, bloklangan hisob raqam), kutmang, hoziroq yozing:",
   },
   ru: {
     title: "Вспомните до звонка",
@@ -151,12 +151,12 @@ export const thanksExtra: Record<Locale, { title: string; items: string[]; teleg
 
 export const servicesRouter: Record<Locale, { title: string; lead: string; items: { situation: string; answer: string; id: import("./services").ServiceId }[] }> = {
   uz: {
-    title: "Qaysi biridan boshlash?",
-    lead: "11 ta xizmat — lekin boshlanish nuqtasi odatda uchtadan biri.",
+    title: "Nimadan boshlash kerak?",
+    lead: "Xizmat 11 ta, lekin boshlanish nuqtasi odatda shu uchtadan biri.",
     items: [
-      { situation: "Buxgalterim bor, hammasi joyida koʻrinadi", answer: "Ekspress-auditdan boshlang. Bir necha kunda ortiqcha toʻlov va xavflar roʻyxatini olasiz — hech qanday majburiyatsiz.", id: "entry-audit" },
-      { situation: "Talabnoma keldi yoki hisob raqam bloklandi", answer: "Bu shoshilinch. Javob muddati bor — bugun qoʻngʻiroq qiling, hujjatlarni birga tayyorlaymiz.", id: "audit-defense" },
-      { situation: "Soliq koʻp chiqyapti, qonuniy kamaytirmoqchiman", answer: "Amaldagi imtiyozlardan sizga mosini topamiz va qoʻllaymiz — tejalgan summadan foiz olmaymiz.", id: "tax-reduction" },
+      { situation: "Buxgalterim bor, hammasi joyida koʻrinadi", answer: "Ekspress-auditdan boshlang. Bir necha kunda ortiqcha toʻlovlar va xavflar roʻyxatini olasiz. Hech qanday majburiyatsiz.", id: "entry-audit" },
+      { situation: "Talabnoma keldi yoki hisob raqam bloklandi", answer: "Bu shoshilinch. Javob berish muddati bor. Bugun qoʻngʻiroq qiling, hujjatlarni birga tayyorlaymiz.", id: "audit-defense" },
+      { situation: "Soliq koʻp chiqyapti, qonuniy kamaytirmoqchiman", answer: "Amaldagi imtiyozlardan sizga mos keladiganini topamiz va qoʻllaymiz. Tejalgan puldan foiz olmaymiz.", id: "tax-reduction" },
     ],
   },
   ru: {
@@ -174,17 +174,17 @@ export const pricingIncluded: Record<Locale, { title: string; items: string[]; n
   uz: {
     title: "Narx ichida nima bor",
     items: [
-      "Toʻliq buxgalteriya va soliq hisobi — 1C da",
-      "Barcha hisobotlar muddatida",
-      "Savolga javob — 10 daqiqagacha, 24/7",
-      "Soliq imtiyozlarini topish va qoʻllash — foizsiz",
-      "Har oy ombor ↔ 1C solishtiruvi",
+      "Toʻliq buxgalteriya va soliq hisobi, 1C da",
+      "Barcha hisobotlar oʻz vaqtida",
+      "Savolga javob 10 daqiqagacha, 24/7",
+      "Soliq imtiyozlarini topish va qoʻllash, foizsiz",
+      "Har oy ombor va 1C solishtiruvi",
       "Kontragentlarni tekshirish",
-      "Sizga oylik hisobot: qancha soliq, nega, nimaga tayyorlanish kerak",
-      "Buxgalter ofisingizda — oyiga 3 marta",
-      "Xatomiz sabab jarima — bizning hisobimizdan",
+      "Sizga har oy hisobot: qancha soliq chiqdi, nega va nimaga tayyorlanish kerak",
+      "Buxgalter ofisingizda, oyiga 3 marta",
+      "Xato bizdan chiqsa, jarima bizning hisobimizdan",
     ],
-    note: "Soliq tekshiruvi, hisob raqamni ochish, nizolar — autsorsing mijozlari uchun shartnoma ichida. Alohida toʻlanadigan yagona narsa — ekspress-audit; shartnoma tuzilsa, uning narxi hisobga olinadi.",
+    note: "Soliq tekshiruvi, hisob raqamni ochish va nizolar doimiy mijozlar uchun shartnoma ichida. Alohida toʻlanadigan yagona narsa ekspress-audit. Shartnoma tuzilsa, uning narxi hisobga olinadi.",
   },
   ru: {
     title: "Что входит в цену",

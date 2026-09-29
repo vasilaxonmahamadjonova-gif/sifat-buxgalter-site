@@ -61,17 +61,17 @@ export const ui: Record<Locale, UiStrings> = {
   uz: {
     skip: "Asosiy qismga oʻtish",
     nav: { services: "Xizmatlar", pricing: "Narxlar", team: "Jamoa", faq: "Savollar", contact: "Aloqa" },
-    headerCta: "10 daqiqalik qoʻngʻiroq",
+    headerCta: "Ekspress-audit",
     langSwitch: "RU",
     breadcrumbHome: "Bosh sahifa",
     breadcrumbServices: "Xizmatlar",
     allServices: "Barcha xizmatlar",
     relatedTitle: "Bogʻliq xizmatlar",
-    ctaTitle: "Bepul 10 daqiqalik qoʻngʻiroq",
+    ctaTitle: "Bepul ekspress-audit",
     ctaText:
-      "Telefoningizni qoldiring — Bekzod 10 daqiqa ichida bogʻlanadi. Hech qayerga borish shart emas: ofisda uchrashuvni faqat oʻzingiz xohlasangiz belgilaymiz.",
+      "Telefon raqamingizni qoldiring, Bekzod tez orada bogʻlanadi. Hech qayerga borish shart emas: ofisda uchrashuvni faqat oʻzingiz xohlasangiz belgilaymiz.",
     orCall: "Yoki hoziroq qoʻngʻiroq qiling",
-    telegramLine: "Yozishmani afzal koʻrasizmi? Bekzodga Telegramda yozing",
+    telegramLine: "Yozishma qulayroqmi? Bekzodga Telegramda yozing",
     form: {
       name: "Ismingiz",
       phone: "Telefon",
@@ -80,9 +80,9 @@ export const ui: Record<Locale, UiStrings> = {
       turnovers: ["1 mlrd soʻmgacha", "1–5 mlrd soʻm", "5–20 mlrd soʻm", "20 mlrd soʻmdan ortiq"],
       submit: "Qoʻngʻiroqni kutaman",
       sending: "Yuborilmoqda…",
-      privacy: "Maʼlumotlaringiz faqat siz bilan bogʻlanish uchun ishlatiladi.",
+      privacy: "Maʼlumotlaringizni faqat siz bilan bogʻlanish uchun ishlatamiz.",
       privacyLink: "Maxfiylik siyosati",
-      error: "Yuborilmadi. Iltimos, qoʻngʻiroq qiling yoki Telegramda yozing.",
+      error: "Yuborilmadi. Qoʻngʻiroq qiling yoki Telegramda yozing.",
       errorPhone: "Telefon raqamini tekshiring: +998 XX XXX XX XX",
     },
     footer: {
@@ -96,7 +96,7 @@ export const ui: Record<Locale, UiStrings> = {
       copyright: "© 2026 Sifat Buxgalter",
     },
     readMore: "Batafsil →",
-    pricingLink: "Narx qanday shakllanadi →",
+    pricingLink: "Narx qanday belgilanadi →",
   },
   ru: {
     skip: "К основному содержанию",

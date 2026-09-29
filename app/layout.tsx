@@ -1,3 +1,4 @@
+import "@fontsource-variable/onest";
 import "./globals.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

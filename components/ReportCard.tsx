@@ -1,7 +1,9 @@
 import type { HomeContent } from "@/content/home";
 import { fillPeriod, reportPeriod } from "@/content/months";
 import type { Locale } from "@/content/services";
+import Tiles from "./Tiles";
 
+/** Direktor uchun oylik hisobot — oq qog'oz namunasi. Qimirlamaydi, gradient yo'q. */
 export default function ReportCard({ s, locale }: { s: HomeContent["hero"]["sample"]; locale: Locale }) {
   const p = reportPeriod(locale);
   return (
@@ -19,7 +21,9 @@ export default function ReportCard({ s, locale }: { s: HomeContent["hero"]["samp
             <span className="k">{k}</span>
             <span className="dots" />
             <span className="v">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
               {fillPeriod(v, p)}
             </span>
           </li>
@@ -36,19 +40,7 @@ export default function ReportCard({ s, locale }: { s: HomeContent["hero"]["samp
         </div>
       </div>
       <div className="paper-sign">{s.signed}</div>
-      <div className="seal">
-        <svg viewBox="0 0 120 120" width="120" height="120">
-          <defs>
-            <path id="sealPath" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" />
-          </defs>
-          <circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" strokeWidth="2.5" />
-          <circle cx="60" cy="60" r="34" fill="none" stroke="currentColor" strokeWidth="1.2" />
-          <text fontSize="10" fontWeight="700" fill="currentColor" textLength="272" lengthAdjust="spacing">
-            <textPath href="#sealPath" textLength="272" lengthAdjust="spacing">{s.stamp}</textPath>
-          </text>
-          <image href="/mark.png" x="44" y="44" width="32" height="33" />
-        </svg>
-      </div>
+      <Tiles className="paper-mark" />
     </div>
   );
 }

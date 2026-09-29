@@ -86,7 +86,7 @@ export default function LeadForm({ locale, source }: { locale: Locale; source: s
       </fieldset>
       {/* honeypot */}
       <input type="text" name="website" tabIndex={-1} autoComplete="off" style={{ position: "absolute", left: -9999 }} aria-hidden="true" />
-      <button className="btn btn-gold" type="submit" disabled={busy}>
+      <button className="btn btn-accent" type="submit" disabled={busy}>
         {busy ? t.sending : t.submit}
       </button>
       {err === "phone" && (
