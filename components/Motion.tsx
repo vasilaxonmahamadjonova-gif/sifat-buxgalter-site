@@ -38,7 +38,13 @@ export default function Motion() {
       el.classList.add("rv");
       io.observe(el);
     });
-    return () => io.disconnect();
+    // chop etish yoki toʻliq sahifa skrinshotida hammasi koʻrinsin
+    const showAll = () => els.forEach((el) => el.classList.remove("rv", "in"));
+    window.addEventListener("beforeprint", showAll);
+    return () => {
+      io.disconnect();
+      window.removeEventListener("beforeprint", showAll);
+    };
   }, [pathname]);
   return null;
 }
