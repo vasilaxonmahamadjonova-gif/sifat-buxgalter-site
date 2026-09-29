@@ -75,11 +75,11 @@ export const home: Record<Locale, HomeContent> = {
       h1: "Buxgalteringiz bor. Soliq xavfi esa hali ham sizning boʻyningizda",
       h1Accent: "Soliq xavfi",
       lead:
-        "Hisobotni oʻz vaqtida topshirish bu eng kamida qilinadigan ish. Biz unga uchta narsa qoʻshamiz: savolga 10 daqiqada javob, soliqni qonuniy kamaytirish va shartnomada yozilgan javobgarlik. Xato bizdan chiqsa, jarimani oʻzimiz toʻlaymiz.",
-      cta: "Bepul ekspress-audit",
+        "Hisobot oʻz vaqtida topshirilishi eng kam talab. Biz unga savolga tez javob, soliqni qonuniy kamaytirish va shartnomada yozilgan javobgarlikni qoʻshamiz. Xato bizdan chiqsa, jarimani oʻzimiz toʻlaymiz.",
+      cta: "Ekspress-audit",
       telegram: "Telegramda yozish",
       note:
-        "Hech qayerga borishingiz shart emas. Bekzod oʻzi qoʻngʻiroq qiladi, hisobingiz haqida ikki-uchta savol beradi va ortiqcha toʻlov odatda qayerda yashirinishini aytadi.",
+        "Bepul, 10 daqiqa, hech qayerga borishingiz shart emas. Bekzod oʻzi qoʻngʻiroq qiladi va ortiqcha toʻlov odatda qayerda yashirinishini aytadi.",
       sample: {
         title: "Direktor uchun oylik hisobot",
         period: "{month} {year}",

@@ -3,13 +3,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ClientLogos from "@/components/ClientLogos";
 import CtaSection from "@/components/CtaSection";
-import ReportCard from "@/components/ReportCard";
 import ServiceIcon from "@/components/ServiceIcon";
 import Tiles from "@/components/Tiles";
 import JsonLd, { faqLd } from "@/components/JsonLd";
 import { home } from "@/content/home";
 import { homePath, isLocale, sectionPath, servicePath, siteUrl } from "@/content/routes";
-import { contacts, ui } from "@/content/site";
+import { ui } from "@/content/site";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -64,23 +63,16 @@ export default async function HomePage({ params }: Props) {
       <section className="hero">
         <Tiles className="hero-pattern" />
         <div className="wrap">
-          <div>
-            <Eyebrow>{h.hero.eyebrow}</Eyebrow>
-            <h1>
-              <Headline text={h.hero.h1} accent={h.hero.h1Accent} />
-            </h1>
-            <p className="lead">{h.hero.lead}</p>
-            <div className="actions">
-              <a className="btn btn-accent" href="#ariza">
-                {h.hero.cta}
-              </a>
-              <a className="btn btn-outline" href={contacts.telegram} target="_blank" rel="noopener">
-                {h.hero.telegram}
-              </a>
-            </div>
-          </div>
-          <div className="hero-side">
-            <ReportCard s={h.hero.sample} locale={locale} />
+          <h1>
+            <Headline text={h.hero.h1} accent={h.hero.h1Accent} />
+          </h1>
+          <p className="lead">{h.hero.lead}</p>
+          <div className="actions">
+            <a className="btn btn-accent" href="#ariza">
+              {h.hero.cta}
+              <span className="tile" aria-hidden="true" />
+            </a>
+            <p className="hero-note">{h.hero.note}</p>
           </div>
         </div>
       </section>
