@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ClientLogos from "@/components/ClientLogos";
 import CtaSection from "@/components/CtaSection";
+import PromiseIcon from "@/components/PromiseIcon";
+import ReportCard from "@/components/ReportCard";
 import ServiceIcon from "@/components/ServiceIcon";
 import Tiles from "@/components/Tiles";
 import JsonLd, { faqLd } from "@/components/JsonLd";
@@ -62,17 +64,22 @@ export default async function HomePage({ params }: Props) {
       {/* 1. HERO — to'liq ekran */}
       <section className="hero">
         <Tiles className="hero-pattern" />
-        <div className="wrap">
-          <h1>
-            <Headline text={h.hero.h1} accent={h.hero.h1Accent} />
-          </h1>
-          <p className="lead">{h.hero.lead}</p>
-          <div className="actions">
-            <a className="btn btn-accent" href="#ariza">
-              {h.hero.cta}
-              <span className="tile" aria-hidden="true" />
-            </a>
-            <p className="hero-note">{h.hero.note}</p>
+        <div className="wrap hero-grid">
+          <div>
+            <h1>
+              <Headline text={h.hero.h1} accent={h.hero.h1Accent} />
+            </h1>
+            <p className="lead">{h.hero.lead}</p>
+            <div className="actions">
+              <a className="btn btn-accent" href="#ariza">
+                {h.hero.cta}
+                <span className="tile" aria-hidden="true" />
+              </a>
+              <p className="hero-note">{h.hero.note}</p>
+            </div>
+          </div>
+          <div className="hero-card">
+            <ReportCard s={h.hero.sample} locale={locale} />
           </div>
         </div>
       </section>
@@ -208,7 +215,11 @@ export default async function HomePage({ params }: Props) {
       </section>
 
       {/* 7. MAJBURIYATLAR — to'q */}
-      <section id="majburiyatlar" className="dark">
+      <section id="majburiyatlar" className="dark glass">
+        <div className="glass-bg" aria-hidden="true">
+          <Tiles className="a" />
+          <Tiles className="b" />
+        </div>
         <div className="wrap">
           <div className="head">
             <div>
@@ -217,23 +228,21 @@ export default async function HomePage({ params }: Props) {
             </div>
             <p className="lead">{h.promises.lead}</p>
           </div>
-          <ol className="promises">
+          <ul className="glass-grid">
             {h.promises.items.map((p, i) => (
-              <li key={p.title}>
-                <div className="num">0{i + 1}</div>
-                <div>
-                  <h3>{p.title}</h3>
-                  <p>{p.text}</p>
-                </div>
+              <li className="glass-card" key={p.title}>
+                <PromiseIcon i={i} />
+                <h3>{p.title}</h3>
+                <p>{p.text}</p>
               </li>
             ))}
-          </ol>
+          </ul>
         </div>
       </section>
 
       {/* 8. NARX — och */}
       <section id="narx" className="light">
-        <div className="wrap">
+        <div className="wrap wrap-wide">
           <div className="head">
             <div>
               <Eyebrow>{h.pricing.eyebrow}</Eyebrow>
@@ -241,9 +250,12 @@ export default async function HomePage({ params }: Props) {
             </div>
             <p className="lead">{h.pricing.intro}</p>
           </div>
-          <div className="price-grid">
+          <div className="board">
             {h.pricing.cards.map((c) => (
-              <div className="card" key={c.title}>
+              <div className="board-card" key={c.title}>
+                <span className="glass-icon" aria-hidden="true">
+                  <Tiles />
+                </span>
                 <h3>{c.title}</h3>
                 <p>{c.text}</p>
               </div>

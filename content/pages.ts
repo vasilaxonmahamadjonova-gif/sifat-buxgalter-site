@@ -6,7 +6,7 @@ export const pages: Record<Locale, Record<"services" | "pricing" | "team" | "faq
   uz: {
     services: {
       title: "Buxgalteriya xizmatlari, Toshkent | Sifat Buxgalter",
-      description: "MChJ uchun buxgalteriya xizmatlari: hisob va hisobotlar, soliqni kamaytirish, tekshiruv va nizolar, kadrlar, tashqi savdo. Bitta shartnoma, savolga 10 daqiqada javob. Toshkent.",
+      description: "MChJ uchun buxgalteriya xizmatlari: hisob va hisobotlar, soliqni kamaytirish, tekshiruv va nizolar, kadrlar, tashqi savdo. Bitta shartnoma, savolga tez javob. Toshkent.",
       eyebrow: "Xizmatlar · Toshkent",
       h1: "Butun buxgalteriya bitta shartnomada",
       lead: "Har bir xizmat uchun alohida sahifa: kimga kerak, nima kiradi, qanday ishlaymiz, narxi qancha. Nimadan boshlashni bilmasangiz, ekspress-auditdan boshlaymiz.",
@@ -36,7 +36,7 @@ export const pages: Record<Locale, Record<"services" | "pricing" | "team" | "faq
       title: "Aloqa | Sifat Buxgalter, Toshkent",
       description: "Sifat Buxgalter bilan bogʻlaning: +998 97 732 18 48, Telegram @Davronbekov_Bekzod. Ofis: Toshkent, Yakkasaroy, Muqimiy koʻchasi. 24/7.",
       eyebrow: "Aloqa",
-      h1: "Bitta suhbat va siz hisobingizda pul qayerda yoʻqolayotganini bilasiz",
+      h1: "Bitta suhbat yetadi: hisobingizda pul qayerda yoʻqolayotganini bilib olasiz",
       lead: "Bu sotuv qoʻngʻirogʻi emas. Bekzod hisobingiz haqida ikki-uchta savol beradi va birinchi navbatda nimani tekshirish kerakligini aytadi. Keyingi qaror sizniki.",
     },
     privacy: {
@@ -176,7 +176,7 @@ export const pricingIncluded: Record<Locale, { title: string; items: string[]; n
     items: [
       "Toʻliq buxgalteriya va soliq hisobi, 1C da",
       "Barcha hisobotlar oʻz vaqtida",
-      "Savolga javob 10 daqiqagacha, 24/7",
+      "Savolga tez javob, 24/7",
       "Soliq imtiyozlarini topish va qoʻllash, foizsiz",
       "Har oy ombor va 1C solishtiruvi",
       "Kontragentlarni tekshirish",

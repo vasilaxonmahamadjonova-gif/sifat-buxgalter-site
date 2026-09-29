@@ -9,6 +9,7 @@ import { contactExtra, pages, pricingIncluded, privacyText, servicesRouter, than
 import { homePath, isLocale, kindFromSection, locales, sectionPath, sections, servicePath, siteUrl, type PageKind } from "@/content/routes";
 import { serviceOrder, services } from "@/content/services";
 import { contacts, ui } from "@/content/site";
+import PromiseIcon from "@/components/PromiseIcon";
 import Tiles from "@/components/Tiles";
 
 type Props = { params: Promise<{ locale: string; section: string }> };
@@ -77,7 +78,7 @@ export default async function SectionPage({ params }: Props) {
       <>
         <Hero locale={locale} kind={kind} />
         <section className="light">
-          <div className="wrap">
+          <div className="wrap wrap-wide">
             <div className="head">
               <div>
                 <div className="eyebrow">
@@ -87,9 +88,9 @@ export default async function SectionPage({ params }: Props) {
               </div>
               <p className="lead">{r.lead}</p>
             </div>
-            <div className="router">
+            <div className="board">
               {r.items.map((it) => (
-                <Link key={it.id} href={servicePath(locale, it.id)} className="router-item">
+                <Link key={it.id} href={servicePath(locale, it.id)} className="board-card">
                   <span className="router-q">{it.situation}</span>
                   <span className="router-a">{it.answer}</span>
                   <span className="more">{t.readMore}</span>
@@ -98,8 +99,12 @@ export default async function SectionPage({ params }: Props) {
             </div>
           </div>
         </section>
-        <section className="dark">
-          <div className="wrap">
+        <section className="dark glass">
+          <div className="glass-bg" aria-hidden="true">
+            <Tiles className="a" />
+            <Tiles className="b" />
+          </div>
+          <div className="wrap wrap-wide">
             <div className="head">
               <div>
                 <div className="eyebrow">
@@ -108,11 +113,11 @@ export default async function SectionPage({ params }: Props) {
                 <h2>{h.services.h2}</h2>
               </div>
             </div>
-            <div className="router">
+            <div className="board board-dense">
               {serviceOrder.map((id) => {
                 const s = services[locale][id];
                 return (
-                  <Link key={id} href={servicePath(locale, id)} className="router-item">
+                  <Link key={id} href={servicePath(locale, id)} className="board-card">
                     <span className="related-name">{s.title.split(/ — |: |, /)[0].trim()}</span>
                     <span className="router-q">{s.h1}</span>
                     <span className="router-a">{s.lead.split(". ")[0]}.</span>
@@ -134,10 +139,13 @@ export default async function SectionPage({ params }: Props) {
       <>
         <Hero locale={locale} kind={kind} />
         <section className="light">
-          <div className="wrap">
-            <div className="price-grid">
+          <div className="wrap wrap-wide">
+            <div className="board">
               {h.pricing.cards.map((c) => (
-                <div className="card" key={c.title}>
+                <div className="board-card" key={c.title}>
+                  <span className="glass-icon" aria-hidden="true">
+                    <Tiles />
+                  </span>
                   <h3>{c.title}</h3>
                   <p>{c.text}</p>
                 </div>
@@ -204,7 +212,7 @@ export default async function SectionPage({ params }: Props) {
           </div>
         </section>
         <section className="light">
-          <div className="wrap">
+          <div className="wrap wrap-wide">
             <div className="head">
               <div>
                 <div className="eyebrow">
@@ -214,17 +222,15 @@ export default async function SectionPage({ params }: Props) {
               </div>
               <p className="lead">{h.promises.lead}</p>
             </div>
-            <ol className="promises promises-light">
+            <ul className="board">
               {h.promises.items.map((pr, i) => (
-                <li key={pr.title}>
-                  <div className="num">0{i + 1}</div>
-                  <div>
-                    <h3>{pr.title}</h3>
-                    <p>{pr.text}</p>
-                  </div>
+                <li className="board-card" key={pr.title}>
+                  <PromiseIcon i={i} />
+                  <h3>{pr.title}</h3>
+                  <p>{pr.text}</p>
                 </li>
               ))}
-            </ol>
+            </ul>
           </div>
         </section>
         <section className="dark">

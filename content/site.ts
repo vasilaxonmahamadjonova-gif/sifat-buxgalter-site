@@ -67,7 +67,7 @@ export const ui: Record<Locale, UiStrings> = {
     breadcrumbServices: "Xizmatlar",
     allServices: "Barcha xizmatlar",
     relatedTitle: "Bogʻliq xizmatlar",
-    ctaTitle: "Bepul ekspress-audit",
+    ctaTitle: "Ekspress-auditga yoziling",
     ctaText:
       "Telefon raqamingizni qoldiring, Bekzod tez orada bogʻlanadi. Hech qayerga borish shart emas: ofisda uchrashuvni faqat oʻzingiz xohlasangiz belgilaymiz.",
     orCall: "Yoki hoziroq qoʻngʻiroq qiling",

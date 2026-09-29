@@ -104,7 +104,7 @@ export const services: Record<Locale, Record<ServiceId, ServicePage>> = {
       slug: "buxgalteriya-autsorsingi",
       title: "Toshkentda MChJ uchun buxgalteriya xizmati",
       description:
-        "MChJ uchun toʻliq buxgalteriya va soliq hisobi. Bosh buxgalter 2016-yildan beri ishlaydi, savolga 10 daqiqada javob beramiz, xato bizdan chiqsa jarimani oʻzimiz toʻlaymiz. Toshkent.",
+        "MChJ uchun toʻliq buxgalteriya va soliq hisobi. Bosh buxgalter 2016-yildan beri ishlaydi, savolga tez javob beramiz, xato bizdan chiqsa jarimani oʻzimiz toʻlaymiz. Toshkent.",
       eyebrow: "Buxgalteriya xizmati · Toshkent",
       h1: "Buxgalteringiz bor. Soliq xavfi esa hali ham sizning boʻyningizda",
       lead:

@@ -139,23 +139,23 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       <section className="light">
-        <div className="wrap">
+        <div className="wrap wrap-wide">
           <div className="head">
             <div>
               <h2>{s.whyTitle}</h2>
             </div>
           </div>
-          <ol className="promises promises-light">
-            {s.why.map((w, i) => (
-              <li key={w.title}>
-                <div className="num">0{i + 1}</div>
-                <div>
-                  <h3>{w.title}</h3>
-                  <p>{w.text}</p>
-                </div>
+          <ul className="board">
+            {s.why.map((w) => (
+              <li className="board-card" key={w.title}>
+                <span className="glass-icon" aria-hidden="true">
+                  <Tiles />
+                </span>
+                <h3>{w.title}</h3>
+                <p>{w.text}</p>
               </li>
             ))}
-          </ol>
+          </ul>
         </div>
       </section>
 

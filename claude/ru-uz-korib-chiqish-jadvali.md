@@ -5,14 +5,14 @@
 | Kalit | RU (asl) | UZ (yangi) |
 |---|---|---|
 | meta.title | Sifat Buxgalter — аутсорсинг бухгалтерии для ООО, Ташкент | Sifat Buxgalter: MChJ uchun buxgalteriya xizmati, Toshkent |
-| meta.description | Бухгалтерский и налоговый учёт ведёт главный бухгалтер с опытом с 2016 года. Ответ за 10 минут, отчёты в срок, штраф по нашей ошибке платим сами. | Buxgalteriya va soliq hisobini 2016-yildan beri ishlayotgan bosh buxgalter yuritadi. Savolga 10 daqiqada javob, hisobotlar oʻz vaqtida, xato bizdan chiqsa jarimani oʻzimiz toʻlaymiz. |
+| meta.description | Бухгалтерский и налоговый учёт ведёт главный бухгалтер с опытом с 2016 года. Ответ за 10 минут, отчёты в срок, штраф по нашей ошибке платим сами. | Buxgalteriya va soliq hisobini 2016-yildan beri ishlayotgan bosh buxgalter yuritadi. Savolga tez javob, hisobotlar oʻz vaqtida, xato bizdan chiqsa jarimani oʻzimiz toʻlaymiz. |
 | hero.eyebrow | Аутсорсинг бухгалтерии · Ташкент | Buxgalteriya xizmati · Toshkent |
 | hero.h1 | Бухгалтер у вас есть. Налоговый риск — всё ещё на вас | Buxgalteringiz bor. Soliq xavfi esa hali ham sizning boʻyningizda |
 | hero.h1Accent | Налоговый риск | Soliq xavfi |
 | hero.lead | Отчёты сдаются в срок — это минимум. Мы добавляем три вещи: ответ на любой вопрос за 10 минут, законное снижение налогов и ответственность, прописанную в договоре, — штраф по нашей ошибке платим сами. Учёт лично ведёт главный бухгалтер с опытом с 2016 года. | Hisobot oʻz vaqtida topshirilishi eng kam talab. Biz unga savolga tez javob, soliqni qonuniy kamaytirish va shartnomada yozilgan javobgarlikni qoʻshamiz. Xato bizdan chiqsa, jarimani oʻzimiz toʻlaymiz. |
 | hero.cta | Бесплатный звонок на 10 минут | Ekspress-audit |
 | hero.telegram | Написать в Telegram | Telegramda yozish |
-| hero.note | Никуда ехать не нужно. Бекзод перезвонит, задаст два-три вопроса о вашем учёте и скажет, где обычно прячется переплата. | Bepul, 10 daqiqa, hech qayerga borishingiz shart emas. Bekzod oʻzi qoʻngʻiroq qiladi va ortiqcha toʻlov odatda qayerda yashirinishini aytadi. |
+| hero.note | Никуда ехать не нужно. Бекзод перезвонит, задаст два-три вопроса о вашем учёте и скажет, где обычно прячется переплата. | Birinchi suhbat bepul, 10 daqiqa. Hech qayerga borishingiz shart emas. Bekzod oʻzi qoʻngʻiroq qiladi va ortiqcha toʻlov odatda qayerda yashirinishini aytadi. |
 | hero.sample.title | Отчёт директору за месяц | Direktor uchun oylik hisobot |
 | hero.sample.badge | Образец | Namuna |
 | hero.sample.rows[0][0] | НДС, НДФЛ, соцналог | QQS, JShDS, ijtimoiy soliq |
@@ -32,9 +32,9 @@
 | hero.sample.signed | Проверил главный бухгалтер | Bosh buxgalter tekshirdi |
 | stats[0][1] | года в бухгалтерии | yildan beri buxgalteriyada |
 | stats[1][0] | 4 млрд | 4 mlrd |
-| stats[1][1] | сум налогов в год экономии клиентам | soʻmgacha yiliga mijozlarga tejalgan soliq |
-| stats[2][0] | 10 мин | 10 daq. |
-| stats[2][1] | ответ на вопрос | ichida savolga javob |
+| stats[1][1] | сум налогов в год экономии клиентам | soʻmgacha soliq har yili mijozlarga tejab beriladi |
+| stats[2][0] | 10 мин | 3 marta («10 daqiqa» saytda faqat bir marta, hero yonida qoladi; raqam RU dagi «3 раза в месяц» faktidan) |
+| stats[2][1] | ответ на вопрос | oyiga buxgalter ofisingizda boʻladi |
 | stats[3][1] | на связи, включая выходные | aloqadamiz, dam olish kunlari ham |
 | triggers.eyebrow | Когда к нам приходят | Qachon murojaat qilishadi |
 | triggers.h2 | Обычно пишут в двух случаях: когда с бухгалтером что-то не так — или когда всё выглядит нормально | Odatda ikki holatda yozishadi: buxgalter bilan muammo chiqqanda yoki hammasi joyida koʻringanda |
@@ -102,8 +102,8 @@
 | services.hubLink | Все услуги → | Barcha xizmatlar |
 | promises.eyebrow | Обязательства | Majburiyatlar |
 | promises.h2 | Что мы прописываем в договоре | Shartnomaga nimalarni yozamiz |
-| promises.lead | Sifat значит «качество». В договоре мы записываем его измеримыми цифрами. | Nomimiz Sifat. Shartnomada uni oʻlchab boʻladigan raqamlar bilan yozib beramiz. |
-| promises.items[0].title | Ответ — до 10 минут | Javob 10 daqiqa ichida |
+| promises.lead | Sifat значит «качество». В договоре мы записываем его измеримыми цифрами. | Nomimiz Sifat. Shartnomada sifatni oʻlchasa boʻladigan raqamlar bilan yozamiz. |
+| promises.items[0].title | Ответ — до 10 минут | Savolga darhol javob |
 | promises.items[0].text | Открываем с вами общую группу в Telegram: написали — ответ в течение 10 минут. На связи 24/7 — и в субботу, и в воскресенье. | Siz bilan umumiy Telegram guruh ochamiz. Yozasiz va shu zahoti javob olasiz. Shanba va yakshanba kunlari ham aloqadamiz. |
 | promises.items[1].title | Наша ошибка — наш штраф | Xato bizdan chiqsa, jarimani biz toʻlaymiz |
 | promises.items[1].text | Если штраф возник по нашей вине, платим его сами. Условие одно: склад ведётся честно. | Jarima bizning aybimiz bilan chiqsa, uni oʻzimiz toʻlaymiz. Bitta shart bor: ombor hisobi halol yuritilsin. |
@@ -183,7 +183,7 @@
 | faq.items[9].q | Почему дороже штатного бухгалтера? | Nega shtatdagi buxgalterdan qimmat? |
 | faq.items[9].a | Штатный бухгалтер часто ведёт ещё несколько фирм — на проверку времени нет. В нашу цену входит: ответ за 10 минут, применение льгот, ежемесячная сверка со складом и штраф за нашу ошибку за наш счёт. | Shtatdagi buxgalter koʻpincha yonidan yana bir nechta firmani yuritadi, tekshirishga vaqt qolmaydi. Bizning narx ichida: tez javob, imtiyozlarni qoʻllash, har oy ombor bilan solishtirish va xatomiz uchun jarimani oʻzimiz toʻlashimiz. |
 | cta.eyebrow | Первый шаг | Birinchi qadam |
-| manifest | Отчёт — не мнение. Штраф — тоже. | Hisobot fikr emas. Jarima ham. |
+| manifest | Отчёт — не мнение. Штраф — тоже. | Hisobot fikr emas, fakt. Jarima ham fakt. |
 | ask.h2 | Готовы увидеть, что упустил ваш бухгалтер? | Buxgalteringiz nimani oʻtkazib yuborganini koʻrishga tayyormisiz? |
 | ask.text | Один звонок на 10 минут — и вы знаете, что проверить первым. | Bitta ekspress-audit va siz birinchi navbatda nimani tekshirish kerakligini bilasiz. |
 | ask.cta | Записаться на бесплатный звонок | Ekspress-auditga yozilish |
@@ -216,7 +216,7 @@
 | breadcrumbServices | Услуги | Xizmatlar |
 | allServices | Все услуги | Barcha xizmatlar |
 | relatedTitle | Связанные услуги | Bogʻliq xizmatlar |
-| ctaTitle | Бесплатный звонок на 10 минут | Bepul ekspress-audit |
+| ctaTitle | Бесплатный звонок на 10 минут | Ekspress-auditga yoziling |
 | ctaText | Оставьте телефон — Бекзод свяжется в течение 10 минут. Никаких поездок: встречу в офисе назначим, только если сами захотите. | Telefon raqamingizni qoldiring, Bekzod tez orada bogʻlanadi. Hech qayerga borish shart emas: ofisda uchrashuvni faqat oʻzingiz xohlasangiz belgilaymiz. |
 | orCall | Или позвоните прямо сейчас | Yoki hoziroq qoʻngʻiroq qiling |
 | telegramLine | Удобнее переписка? Напишите Бекзоду в Telegram | Yozishma qulayroqmi? Bekzodga Telegramda yozing |
@@ -248,7 +248,7 @@
 | Kalit | RU (asl) | UZ (yangi) |
 |---|---|---|
 | services.title | Бухгалтерские услуги в Ташкенте — Sifat Buxgalter | Buxgalteriya xizmatlari, Toshkent \| Sifat Buxgalter |
-| services.description | Бухгалтерские услуги для ООО: учёт и отчётность, снижение налогов, проверки и споры, кадры, ВЭД. Один договор, ответ за 10 минут. Ташкент. | MChJ uchun buxgalteriya xizmatlari: hisob va hisobotlar, soliqni kamaytirish, tekshiruv va nizolar, kadrlar, tashqi savdo. Bitta shartnoma, savolga 10 daqiqada javob. Toshkent. |
+| services.description | Бухгалтерские услуги для ООО: учёт и отчётность, снижение налогов, проверки и споры, кадры, ВЭД. Один договор, ответ за 10 минут. Ташкент. | MChJ uchun buxgalteriya xizmatlari: hisob va hisobotlar, soliqni kamaytirish, tekshiruv va nizolar, kadrlar, tashqi savdo. Bitta shartnoma, savolga tez javob. Toshkent. |
 | services.eyebrow | Услуги · Ташкент | Xizmatlar · Toshkent |
 | services.h1 | Вся бухгалтерия — в одном договоре | Butun buxgalteriya bitta shartnomada |
 | services.lead | По каждой услуге отдельная страница: кому нужно, что входит, как работаем, цена. Не знаете, с чего начать — начнём с экспресс-аудита. | Har bir xizmat uchun alohida sahifa: kimga kerak, nima kiradi, qanday ishlaymiz, narxi qancha. Nimadan boshlashni bilmasangiz, ekspress-auditdan boshlaymiz. |
@@ -270,7 +270,7 @@
 | contact.title | Контакты — Sifat Buxgalter, Ташкент | Aloqa \| Sifat Buxgalter, Toshkent |
 | contact.description | Связаться с Sifat Buxgalter: +998 97 732 18 48, Telegram @Davronbekov_Bekzod. Офис: Ташкент, Яккасарай, ул. Мукими. 24/7. | Sifat Buxgalter bilan bogʻlaning: +998 97 732 18 48, Telegram @Davronbekov_Bekzod. Ofis: Toshkent, Yakkasaroy, Muqimiy koʻchasi. 24/7. |
 | contact.eyebrow | Контакты | Aloqa |
-| contact.h1 | Один звонок — и вы знаете, где в вашем учёте теряются деньги | Bitta suhbat va siz hisobingizda pul qayerda yoʻqolayotganini bilasiz |
+| contact.h1 | Один звонок — и вы знаете, где в вашем учёте теряются деньги | Bitta suhbat yetadi: hisobingizda pul qayerda yoʻqolayotganini bilib olasiz |
 | contact.lead | Это не продающий звонок. Бекзод задаст два-три вопроса о вашем учёте и скажет, что проверить первым. Дальше решение — за вами. | Bu sotuv qoʻngʻirogʻi emas. Bekzod hisobingiz haqida ikki-uchta savol beradi va birinchi navbatda nimani tekshirish kerakligini aytadi. Keyingi qaror sizniki. |
 | privacy.title | Политика конфиденциальности — Sifat Buxgalter | Maxfiylik siyosati \| Sifat Buxgalter |
 | privacy.description | Как используются и хранятся данные, отправленные через сайт Sifat Buxgalter. | Sifat Buxgalter sayti orqali yuborilgan maʼlumotlar qanday ishlatiladi va saqlanadi. |
@@ -308,7 +308,7 @@
 | cta | Бесплатный звонок на 10 минут | Ekspress-audit |
 | ctaNote | Никуда ехать не нужно. Бекзод свяжется в течение 10 минут. | Hech qayerga borishingiz shart emas. Bekzod tez orada bogʻlanadi. |
 | title | Аутсорсинг бухгалтерии в Ташкенте для ООО | Toshkentda MChJ uchun buxgalteriya xizmati |
-| description | Полный бухгалтерский и налоговый учёт для ООО. Главный бухгалтер с опытом с 2016 года, ответ за 10 минут, штраф по нашей ошибке платим сами. Ташкент. | MChJ uchun toʻliq buxgalteriya va soliq hisobi. Bosh buxgalter 2016-yildan beri ishlaydi, savolga 10 daqiqada javob beramiz, xato bizdan chiqsa jarimani oʻzimiz toʻlaymiz. Toshkent. |
+| description | Полный бухгалтерский и налоговый учёт для ООО. Главный бухгалтер с опытом с 2016 года, ответ за 10 минут, штраф по нашей ошибке платим сами. Ташкент. | MChJ uchun toʻliq buxgalteriya va soliq hisobi. Bosh buxgalter 2016-yildan beri ishlaydi, savolga tez javob beramiz, xato bizdan chiqsa jarimani oʻzimiz toʻlaymiz. Toshkent. |
 | eyebrow | Аутсорсинг бухгалтерии · Ташкент | Buxgalteriya xizmati · Toshkent |
 | h1 | Бухгалтер у вас есть. Налоговый риск — всё ещё на вас | Buxgalteringiz bor. Soliq xavfi esa hali ham sizning boʻyningizda |
 | lead | Отчёты уходят вовремя — это минимум. Мы нужны для трёх вещей: ответ за 10 минут, законное снижение налогов и ответственность в договоре — штраф по нашей ошибке платим сами. | Hisobotni oʻz vaqtida topshirish eng kam talab. Biz uchta narsa uchun kerakmiz: savolga tez javob, soliqni qonuniy kamaytirish va shartnomada yozilgan javobgarlik. Xato bizdan chiqsa, jarimani oʻzimiz toʻlaymiz. |

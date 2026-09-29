@@ -3,44 +3,36 @@ import { fillPeriod, reportPeriod } from "@/content/months";
 import type { Locale } from "@/content/services";
 import Tiles from "./Tiles";
 
-/** Direktor uchun oylik hisobot — oq qog'oz namunasi. Qimirlamaydi, gradient yo'q. */
+/**
+ * Direktor uchun oylik hisobot — hero'dagi oq qogʻoz.
+ * Hujjat kabi: sarlavha, davr, «Namuna» belgisi, 5 qator, imzo.
+ * Marketing raqamlari (24/7, tashrif) bu yerda yoʻq — ular alohida blokda.
+ * Bitta qator (qoʻllangan imtiyoz va tejalgan pul) ajratib koʻrsatiladi.
+ */
 export default function ReportCard({ s, locale }: { s: HomeContent["hero"]["sample"]; locale: Locale }) {
   const p = reportPeriod(locale);
+  const highlight = 3;
   return (
-    <div className="paper" aria-hidden="true">
+    <div className="paper">
       <div className="paper-head">
         <div>
-          <div className="paper-title">{s.title}</div>
+          <div className="paper-kicker">{s.title}</div>
           <div className="paper-period">{fillPeriod(s.period, p)}</div>
         </div>
         <span className="paper-badge">{s.badge}</span>
       </div>
       <ul className="paper-rows">
-        {s.rows.map(([k, v]) => (
-          <li key={k}>
+        {s.rows.map(([k, v], i) => (
+          <li key={k} className={i === highlight ? "hi" : undefined}>
             <span className="k">{k}</span>
-            <span className="dots" />
-            <span className="v">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M20 6L9 17l-5-5" />
-              </svg>
-              {fillPeriod(v, p)}
-            </span>
+            <span className="v">{fillPeriod(v, p)}</span>
           </li>
         ))}
       </ul>
-      <div className="paper-stats">
-        <div>
-          <small>{s.stat1[0]}</small>
-          <strong>{s.stat1[1]}</strong>
-        </div>
-        <div>
-          <small>{s.stat2[0]}</small>
-          <strong>{s.stat2[1]}</strong>
-        </div>
+      <div className="paper-foot">
+        <span>{s.signed}</span>
+        <Tiles className="paper-mark" />
       </div>
-      <div className="paper-sign">{s.signed}</div>
-      <Tiles className="paper-mark" />
     </div>
   );
 }

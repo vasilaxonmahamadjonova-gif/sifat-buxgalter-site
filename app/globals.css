@@ -26,7 +26,7 @@
 
 /* ── reset ── */
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 88px; }
 body {
   margin: 0;
   background: var(--bg-dark);
@@ -87,28 +87,31 @@ section { padding: var(--section) 0; }
 .dark .link { color: var(--accent); }
 .light .link { color: var(--ink); }
 
-/* ── header: fixed EMAS, hero ustida shaffof ── */
-.header { position: absolute; top: 0; left: 0; right: 0; z-index: 20; color: var(--white); }
-.header .wrap { display: flex; align-items: center; gap: 32px; height: 96px; }
+/* ── header: doim yuqorida. Hero ustida shaffof, skrollda toʻq fon ── */
+.header { position: fixed; top: 0; left: 0; right: 0; z-index: 20; color: var(--white); transition: background-color .2s ease, border-color .2s ease; border-bottom: 1px solid transparent; }
+.header.scrolled { background: var(--bg-dark); border-bottom-color: var(--line-dark); }
+.header .wrap { display: flex; align-items: center; gap: 32px; height: 96px; transition: height .2s ease; }
+.header.scrolled .wrap { height: 72px; }
 .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 800; letter-spacing: .04em; font-size: 15px; white-space: nowrap; }
 .brand svg { width: 28px; height: 29px; }
 .brand span { color: var(--accent); }
-.nav { display: flex; gap: 28px; margin-left: auto; }
+.nav { display: flex; gap: 28px; margin: 0 auto; }
 .nav a { text-decoration: none; color: rgba(255, 255, 255, .78); font-size: 15px; font-weight: 500; }
 .nav a:hover { color: var(--white); }
 .header-right { display: flex; align-items: center; gap: 20px; }
+.header-phone { text-decoration: none; font-size: 15px; font-weight: 600; white-space: nowrap; color: var(--white); }
+.header-phone:hover { color: var(--accent); }
 .lang { text-decoration: none; font-size: 13px; font-weight: 700; padding: 8px 12px; border: 1px solid rgba(255, 255, 255, .25); border-radius: var(--radius); }
 .lang:hover { border-color: var(--white); }
 .menu-btn { display: none; background: none; color: var(--white); border: 1px solid rgba(255, 255, 255, .25); border-radius: var(--radius); padding: 10px 12px; cursor: pointer; }
-.mobile-nav { display: none; position: absolute; top: 96px; left: 0; right: 0; background: var(--bg-dark); border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); }
+.mobile-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg-dark); border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); }
 .mobile-nav.open { display: block; }
 .mobile-nav a { display: block; padding: 18px var(--gutter); text-decoration: none; border-bottom: 1px solid var(--line-dark); font-weight: 500; color: var(--white); }
 .mobile-nav .mobile-cta { color: var(--accent); font-weight: 700; }
 @media (max-width: 960px) {
-  .nav, .header .btn, .header .lang { display: none; }
+  .nav, .header .btn, .header .lang, .header-phone { display: none; }
   .menu-btn { display: inline-block; margin-left: auto; }
-  .header .wrap { height: 76px; }
-  .mobile-nav { top: 76px; }
+  .header .wrap, .header.scrolled .wrap { height: 68px; }
 }
 /* ichki sahifalarda header to'q fon ustida */
 .page-hero { padding-top: calc(96px + 56px); }
@@ -117,7 +120,9 @@ section { padding: var(--section) 0; }
 .hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; padding: 140px 0 96px; background: var(--bg-dark); color: var(--white); overflow: hidden; }
 .hero-pattern { position: absolute; right: -6vw; top: 10vh; width: 54vw; max-width: 800px; height: auto; color: var(--white); opacity: .045; pointer-events: none; }
 .hero .wrap { position: relative; width: 100%; }
-.hero h1 { font-size: clamp(40px, 6vw, 88px); max-width: 15ch; margin-bottom: 36px; }
+.hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 64px; align-items: center; }
+.hero-card { display: flex; justify-content: flex-end; }
+.hero h1 { font-size: clamp(40px, 5.2vw, 76px); max-width: 15ch; margin-bottom: 36px; }
 .hero h1 em { font-style: normal; color: var(--accent); }
 .hero .lead { margin-bottom: 48px; max-width: 600px; }
 .hero .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 24px 40px; }
@@ -125,26 +130,24 @@ section { padding: var(--section) 0; }
 @media (max-width: 960px) {
   .hero { padding: 120px 0 72px; min-height: 0; }
   .hero-pattern { display: none; }
+  .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  .hero-card { justify-content: flex-start; }
 }
 
-/* hisobot kartasi — oq qog'oz, qimirlamaydi */
-.paper { position: relative; background: var(--white); color: var(--ink); border-radius: var(--radius); padding: 28px 28px 24px; width: 100%; max-width: 400px; }
-.paper-head { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 14px; border-bottom: 2px solid var(--ink); margin-bottom: 6px; }
-.paper-title { font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
-.paper-period { font-size: 13px; color: var(--muted); margin-top: 4px; }
-.paper-badge { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; padding: 5px 9px; background: var(--accent); color: var(--ink); font-weight: 700; border-radius: 2px; }
-.paper-rows li { display: flex; align-items: baseline; gap: 8px; padding: 10px 0; border-bottom: 1px solid var(--line-light); font-size: 14px; }
-.paper-rows li:last-child { border-bottom: 0; }
-.paper-rows .k { white-space: nowrap; color: rgba(27, 27, 39, .8); }
-.paper-rows .dots { flex: 1; border-bottom: 1px dotted rgba(27, 27, 39, .35); transform: translateY(-4px); }
-.paper-rows .v { font-weight: 700; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
-.paper-rows .v svg { width: 12px; height: 12px; color: var(--accent); }
-.paper-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line-light); }
-.paper-stats small { display: block; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-.paper-stats strong { font-size: 16px; font-weight: 700; }
-.paper-sign { margin-top: 14px; font-size: 13px; color: var(--muted); }
-.paper-mark { position: absolute; right: 22px; bottom: 20px; width: 40px; height: 41px; color: var(--accent); }
-@media (max-width: 480px) { .paper { padding: 22px 18px; } .paper-rows .k { white-space: normal; } }
+/* hisobot kartasi — hujjat kabi oq qogʻoz. Ikonka yoʻq, bitta ajratilgan qator, jadval raqamlar */
+.paper { background: var(--white); color: var(--ink); border-radius: var(--radius); padding: 32px 32px 26px; width: 100%; max-width: 460px; font-variant-numeric: tabular-nums; }
+.paper-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding-bottom: 18px; border-bottom: 2px solid var(--ink); }
+.paper-kicker { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; line-height: 1.3; }
+.paper-period { font-size: 15px; color: var(--muted); margin-top: 6px; text-transform: capitalize; }
+.paper-badge { flex: none; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; padding: 6px 10px; background: var(--accent); color: var(--ink); font-weight: 700; border-radius: 2px; }
+.paper-rows li { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line-light); font-size: 15px; line-height: 1.4; }
+.paper-rows .k { color: rgba(27, 27, 39, .72); }
+.paper-rows .v { font-weight: 700; text-align: right; white-space: nowrap; }
+.paper-rows li.hi { margin: 8px -14px; padding: 14px; background: var(--accent-light); border-radius: var(--radius); border-bottom: 0; }
+.paper-rows li.hi .k { color: var(--ink); font-weight: 500; }
+.paper-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 22px; font-size: 13px; color: var(--muted); }
+.paper-mark { width: 26px; height: 27px; color: var(--accent); flex: none; }
+@media (max-width: 480px) { .paper { padding: 24px 20px; } .paper-rows li { flex-direction: column; gap: 4px; } .paper-rows .v { text-align: left; white-space: normal; } }
 
 /* ── logo pattern (4 ta qiya to'rtburchak) ── */
 .tiles { width: 100%; height: auto; }
@@ -200,12 +203,13 @@ section { padding: var(--section) 0; }
 .svc-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
 .svc { display: flex; flex-direction: column; gap: 18px; padding: 36px; background: var(--white); color: var(--ink); text-decoration: none; border-radius: var(--radius); border: 1px solid transparent; transition: border-color .15s ease; min-height: 300px; }
 .svc:hover { border-color: var(--ink); }
+/* 4+2 / 3+3 / 2+4 — bir xil kartalar qatorda takrorlanmaydi */
 .svc:nth-child(1) { grid-column: span 4; }
 .svc:nth-child(2) { grid-column: span 2; }
-.svc:nth-child(3) { grid-column: span 2; }
-.svc:nth-child(4) { grid-column: span 2; }
+.svc:nth-child(3) { grid-column: span 3; }
+.svc:nth-child(4) { grid-column: span 3; }
 .svc:nth-child(5) { grid-column: span 2; }
-.svc-all { grid-column: span 6; min-height: 0; flex-direction: row; align-items: center; justify-content: space-between; background: var(--bg-dark); color: var(--white); font-size: clamp(22px, 2vw, 30px); font-weight: 700; padding: 40px 36px; border-color: transparent; }
+.svc-all { grid-column: span 4; min-height: 0; flex-direction: row; align-items: center; justify-content: space-between; background: var(--bg-dark); color: var(--white); font-size: clamp(22px, 2vw, 30px); font-weight: 700; padding: 40px 36px; border-color: transparent; }
 .svc-all:hover { border-color: var(--accent); }
 .svc-all svg { width: 28px; height: 29px; color: var(--accent); }
 .svc-icon { width: 40px; height: 40px; color: var(--accent); }
@@ -213,10 +217,38 @@ section { padding: var(--section) 0; }
 .svc ul { display: grid; gap: 8px; color: rgba(27, 27, 39, .72); font-size: 16px; flex: 1; }
 .svc:nth-child(1) ul { grid-template-columns: 1fr 1fr; gap: 8px 24px; }
 .svc .more { font-weight: 600; font-size: 15px; margin-top: 8px; }
-@media (max-width: 960px) { .svc:nth-child(n) { grid-column: span 3; } .svc:nth-child(1) ul { grid-template-columns: 1fr; } .svc-all { grid-column: span 6; } }
+@media (max-width: 960px) { .svc:nth-child(n) { grid-column: span 3; } .svc:nth-child(1), .svc:nth-child(4) { grid-column: span 6; } .svc:nth-child(1) ul { grid-template-columns: 1fr; } .svc-all { grid-column: span 6; } }
 @media (max-width: 640px) { .svc:nth-child(n), .svc-all { grid-column: span 6; } .svc { min-height: 0; padding: 28px 24px; } }
 
-/* ── majburiyatlar: 2 ustun, raqamli ro'yxat ── */
+/* ── shaffof (matoviy) kartalar: toʻq fon + xiralashtirilgan logo shakllari, orasida boʻsh joy ── */
+.glass { position: relative; overflow: hidden; }
+.glass-bg { position: absolute; inset: 0; pointer-events: none; filter: blur(80px); }
+.glass-bg svg { position: absolute; width: 55%; max-width: 900px; height: auto; }
+.glass-bg .a { left: -12%; top: -10%; color: var(--accent); opacity: .22; }
+.glass-bg .b { right: -18%; bottom: -25%; color: var(--white); opacity: .16; }
+.glass .wrap { position: relative; z-index: 1; }
+.glass-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 32px; }
+.glass-card { display: flex; flex-direction: column; gap: 18px; min-height: 300px; padding: 32px; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .12); border-radius: var(--radius); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+.glass-card:nth-child(1) { grid-column: span 2; }
+.glass-card:nth-child(2) { grid-column: span 4; }
+.glass-card:nth-child(3) { grid-column: span 4; }
+.glass-card:nth-child(4) { grid-column: span 2; }
+.glass-card:nth-child(5) { grid-column: span 3; }
+.glass-card:nth-child(6) { grid-column: span 3; }
+.glass-card:nth-child(7) { grid-column: span 6; flex-direction: row; align-items: center; gap: 32px; min-height: 0; }
+.glass-card:nth-child(7) h3 { margin-top: 0; min-width: 260px; }
+.glass-card:nth-child(7) p { margin-top: 0; }
+.glass-icon { width: 48px; height: 48px; flex: none; display: grid; place-items: center; background: var(--accent); color: var(--ink); border-radius: 3px; }
+.glass-icon svg { width: 24px; height: 24px; }
+.glass-card h3 { font-size: 22px; margin-top: 10px; max-width: 22ch; }
+.glass-card p { color: rgba(255, 255, 255, .7); font-size: 16px; line-height: 1.5; margin-top: auto; max-width: 48ch; }
+@media (max-width: 960px) { .glass-card:nth-child(n) { grid-column: span 3; min-height: 0; } .glass-card:nth-child(7) { grid-column: span 6; flex-direction: column; align-items: flex-start; gap: 18px; } .glass-card:nth-child(7) h3 { min-width: 0; } }
+@media (max-width: 640px) { .glass-card:nth-child(n) { grid-column: span 6; padding: 26px 22px; } }
+
+/* toʻq fondagi boshqa kartalar ham shu uslubda */
+.person, .dark .card, .dark .related a { background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .12); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+
+/* ── majburiyatlar: 2 ustun, raqamli ro'yxat (jamoa sahifasida) ── */
 .promises { display: grid; grid-template-columns: 1fr 1fr; gap: 0 80px; }
 .promises li { display: grid; grid-template-columns: 48px 1fr; gap: 20px; padding: 36px 0; border-top: 1px solid var(--line-dark); }
 .promises .num { color: var(--accent); font-weight: 700; font-size: 14px; letter-spacing: .08em; padding-top: 6px; }
@@ -231,7 +263,7 @@ section { padding: var(--section) 0; }
 .card { background: var(--white); color: var(--ink); padding: 36px; border-radius: var(--radius); }
 .card h3 { margin-bottom: 14px; }
 .card p { color: rgba(27, 27, 39, .72); font-size: 16px; line-height: 1.55; }
-.price-links { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 32px; align-items: center; }
+.price-links { margin-top: 64px; display: flex; flex-wrap: wrap; gap: 32px; align-items: center; }
 @media (max-width: 900px) { .price-grid { grid-template-columns: 1fr 1fr; } .price-grid .card:first-child { grid-column: span 2; grid-row: auto; } .price-grid .card:nth-child(4) { grid-column: span 2; } }
 @media (max-width: 600px) { .price-grid { grid-template-columns: 1fr; } .price-grid .card:first-child, .price-grid .card:nth-child(4) { grid-column: auto; } }
 
@@ -256,7 +288,7 @@ section { padding: var(--section) 0; }
 
 /* ── jamoa ── */
 .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.person { background: var(--bg-dark-2); padding: 40px; border-radius: var(--radius); }
+.person { padding: 40px; border-radius: var(--radius); }
 .person .role { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
 .person h3 { font-size: 28px; margin-bottom: 24px; }
 .person li { padding: 12px 0; border-top: 1px solid var(--line-dark); color: rgba(255, 255, 255, .78); font-size: 16px; }
@@ -334,7 +366,7 @@ section { padding: var(--section) 0; }
 @media (max-width: 900px) { .grid-3, .grid-4 { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 640px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } }
 .card ul { display: grid; gap: 8px; color: rgba(27, 27, 39, .72); font-size: 16px; }
-.dark .card { background: var(--bg-dark-2); color: var(--white); }
+.dark .card { color: var(--white); }
 .dark .card p, .dark .card ul { color: rgba(255, 255, 255, .7); }
 
 .checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 40px; }
@@ -342,20 +374,40 @@ section { padding: var(--section) 0; }
 .checklist li::before { content: ""; position: absolute; left: 0; top: .5em; width: 12px; height: 12px; background: var(--accent); transform: skewX(-12deg); }
 @media (max-width: 720px) { .checklist { grid-template-columns: 1fr; } }
 
-.router { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.router-item { display: flex; flex-direction: column; gap: 10px; background: var(--white); color: var(--ink); border-radius: var(--radius); padding: 32px; text-decoration: none; border: 1px solid transparent; transition: border-color .15s ease; }
-.router-item:hover { border-color: var(--ink); }
-.dark .router-item { background: var(--bg-dark-2); color: var(--white); }
-.dark .router-item:hover { border-color: var(--accent); }
-.router-q { font-size: 20px; font-weight: 700; }
-.router-a { font-size: 16px; color: var(--muted); flex: 1; }
-.router-item .more { font-weight: 600; font-size: 15px; }
-@media (max-width: 900px) { .router { grid-template-columns: 1fr; } }
+/* ── shashka setkasi: 4 ustun, boʻsh kataklar, katta oraliq (2-referens) ── */
+.wrap-wide { max-width: 1600px; }
+.board { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+/* haqiqiy shashka: toq qator 1 va 3-katak, juft qator 2 va 4-katak */
+.board > :nth-child(4n+1) { grid-column: 1; }
+.board > :nth-child(4n+2) { grid-column: 3; }
+.board > :nth-child(4n+3) { grid-column: 2; }
+.board > :nth-child(4n+4) { grid-column: 4; }
+/* zich variant (11 ta xizmat): 1-2-4 / 2-3 ritmi, referensdagidek */
+.board-dense > :nth-child(5n+1) { grid-column: 1; }
+.board-dense > :nth-child(5n+2) { grid-column: 2; }
+.board-dense > :nth-child(5n+3) { grid-column: 4; }
+.board-dense > :nth-child(5n+4) { grid-column: 2; }
+.board-dense > :nth-child(5n+5) { grid-column: 3; }
+.board-card { display: flex; flex-direction: column; gap: 14px; min-height: 320px; padding: 32px 28px; border-radius: var(--radius); text-decoration: none; border: 1px solid transparent; transition: border-color .15s ease; }
+.board-card h3 { font-size: 21px; line-height: 1.25; margin-top: 10px; }
+.board-card p { margin-top: auto; font-size: 15px; line-height: 1.5; }
+.light .board-card { background: var(--white); color: var(--ink); }
+.light .board-card p { color: rgba(27, 27, 39, .72); }
+.light a.board-card:hover { border-color: var(--ink); }
+.dark .board-card { background: rgba(255, 255, 255, .06); border-color: rgba(255, 255, 255, .12); color: var(--white); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+.dark .board-card p { color: rgba(255, 255, 255, .7); }
+.dark a.board-card:hover { border-color: var(--accent); }
+.router-q { font-size: 20px; font-weight: 700; line-height: 1.3; }
+.router-a { font-size: 15px; color: var(--muted); flex: 1; line-height: 1.5; }
+.board-card .more { font-weight: 600; font-size: 15px; margin-top: 8px; }
+.board-card .related-name { margin-bottom: 4px; }
+@media (max-width: 1100px) { .board { grid-template-columns: 1fr 1fr; } .board > :nth-child(n), .board-dense > :nth-child(n) { grid-column: auto; } .board-card { min-height: 0; } }
+@media (max-width: 640px) { .board { grid-template-columns: 1fr; gap: 20px; } .board-card { padding: 26px 22px; } }
 
-.related { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.related { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 16px; }
 .related a { display: flex; flex-direction: column; gap: 6px; text-decoration: none; background: var(--white); color: var(--ink); border-radius: var(--radius); padding: 22px 24px; border: 1px solid transparent; }
 .related a:hover { border-color: var(--ink); }
-.dark .related a { background: var(--bg-dark-2); color: var(--white); }
+.dark .related a { color: var(--white); }
 .dark .related a:hover { border-color: var(--accent); }
 .related-name { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
 .related-h1 { font-weight: 600; font-size: 16px; }
@@ -368,7 +420,22 @@ section { padding: var(--section) 0; }
 .prep li { margin: .5em 0; }
 .team-solo { grid-template-columns: 1fr; }
 
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+/* ── harakat: yumshoq paydo boʻlish (Motion.tsx qoʻshadi), kartalarda ohista koʻtarilish ── */
+.rv { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.rv.in { opacity: 1; transform: translateY(0); }
+.board-card, .glass-card, .svc, .light .card, .related a { transition: border-color .2s ease, transform .3s ease, box-shadow .3s ease; }
+a.board-card:hover, .svc:hover, .related a:hover { transform: translateY(-4px); }
+.light a.board-card:hover, .svc:hover, .light .related a:hover { box-shadow: 0 16px 40px rgba(27, 27, 39, .08); }
+.glass-card:hover { border-color: rgba(255, 255, 255, .28); }
+.faq summary::after { transition: transform .25s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.btn .tile { transition: transform .25s ease; }
+.btn:hover .tile { transform: skewX(-12deg) translateX(4px); }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rv { opacity: 1; transform: none; transition: none; }
+  a.board-card:hover, .svc:hover, .related a:hover { transform: none; }
+}
 
 /* ── variantlar: och fonda ro'yxatlar ── */
 .promises-light li { border-top-color: var(--line-light); }

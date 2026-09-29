@@ -68,7 +68,7 @@ export const home: Record<Locale, HomeContent> = {
     meta: {
       title: "Sifat Buxgalter: MChJ uchun buxgalteriya xizmati, Toshkent",
       description:
-        "Buxgalteriya va soliq hisobini 2016-yildan beri ishlayotgan bosh buxgalter yuritadi. Savolga 10 daqiqada javob, hisobotlar oʻz vaqtida, xato bizdan chiqsa jarimani oʻzimiz toʻlaymiz.",
+        "Buxgalteriya va soliq hisobini 2016-yildan beri ishlayotgan bosh buxgalter yuritadi. Savolga tez javob, hisobotlar oʻz vaqtida, xato bizdan chiqsa jarimani oʻzimiz toʻlaymiz.",
     },
     hero: {
       eyebrow: "Buxgalteriya xizmati · Toshkent",
@@ -79,7 +79,7 @@ export const home: Record<Locale, HomeContent> = {
       cta: "Ekspress-audit",
       telegram: "Telegramda yozish",
       note:
-        "Bepul, 10 daqiqa, hech qayerga borishingiz shart emas. Bekzod oʻzi qoʻngʻiroq qiladi va ortiqcha toʻlov odatda qayerda yashirinishini aytadi.",
+        "Birinchi suhbat bepul, 10 daqiqa. Hech qayerga borishingiz shart emas. Bekzod oʻzi qoʻngʻiroq qiladi va ortiqcha toʻlov odatda qayerda yashirinishini aytadi.",
       sample: {
         title: "Direktor uchun oylik hisobot",
         period: "{month} {year}",
@@ -99,8 +99,8 @@ export const home: Record<Locale, HomeContent> = {
     },
     stats: [
       ["2016", "yildan beri buxgalteriyada"],
-      ["4 mlrd", "soʻmgacha yiliga mijozlarga tejalgan soliq"],
-      ["10 daq.", "ichida savolga javob"],
+      ["4 mlrd", "soʻmgacha soliq har yili mijozlarga tejab beriladi"],
+      ["3 marta", "oyiga buxgalter ofisingizda boʻladi"],
       ["24/7", "aloqadamiz, dam olish kunlari ham"],
     ],
     triggers: {
@@ -170,9 +170,9 @@ export const home: Record<Locale, HomeContent> = {
     promises: {
       eyebrow: "Majburiyatlar",
       h2: "Shartnomaga nimalarni yozamiz",
-      lead: "Nomimiz Sifat. Shartnomada uni oʻlchab boʻladigan raqamlar bilan yozib beramiz.",
+      lead: "Nomimiz Sifat. Shartnomada sifatni oʻlchasa boʻladigan raqamlar bilan yozamiz.",
       items: [
-        { title: "Javob 10 daqiqa ichida", text: "Siz bilan umumiy Telegram guruh ochamiz. Yozasiz va shu zahoti javob olasiz. Shanba va yakshanba kunlari ham aloqadamiz." },
+        { title: "Savolga darhol javob", text: "Siz bilan umumiy Telegram guruh ochamiz. Yozasiz va shu zahoti javob olasiz. Shanba va yakshanba kunlari ham aloqadamiz." },
         { title: "Xato bizdan chiqsa, jarimani biz toʻlaymiz", text: "Jarima bizning aybimiz bilan chiqsa, uni oʻzimiz toʻlaymiz. Bitta shart bor: ombor hisobi halol yuritilsin." },
         { title: "Soliqni kamaytiramiz, foiz olmaymiz", text: "Soliqni qonuniy kamaytirish ishimizga kiradi. Tejalgan puldan alohida foiz olmaymiz." },
         { title: "Buxgalter ofisingizda, oyiga 3 marta", text: "Hujjatlarni joyida koʻramiz, savollaringizga yuzma-yuz javob beramiz." },
@@ -254,7 +254,7 @@ export const home: Record<Locale, HomeContent> = {
     },
     cta: { eyebrow: "Birinchi qadam" },
     badge: "{month} 3 ta yangi kompaniya olamiz",
-    manifest: "Hisobot fikr emas. Jarima ham.",
+    manifest: "Hisobot fikr emas, fakt. Jarima ham fakt.",
     ask: { h2: "Buxgalteringiz nimani oʻtkazib yuborganini koʻrishga tayyormisiz?", text: "Bitta ekspress-audit va siz birinchi navbatda nimani tekshirish kerakligini bilasiz.", cta: "Ekspress-auditga yozilish" },
     process: {
       eyebrow: "Ish qanday boshlanadi",
