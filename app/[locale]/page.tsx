@@ -4,8 +4,8 @@ import { notFound } from "next/navigation";
 import ClientLogos from "@/components/ClientLogos";
 import CountUp from "@/components/CountUp";
 import CtaSection from "@/components/CtaSection";
+import Hero from "@/components/Hero";
 import PromiseIcon from "@/components/PromiseIcon";
-import ReportCard from "@/components/ReportCard";
 import ServiceIcon from "@/components/ServiceIcon";
 import Tiles from "@/components/Tiles";
 import { home } from "@/content/home";
@@ -32,19 +32,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-/** Sarlavhadagi bitta iborani sariq qiladi */
-function Headline({ text, accent }: { text: string; accent?: string }) {
-  if (!accent || !text.includes(accent)) return <>{text}</>;
-  const [a, b] = text.split(accent);
-  return (
-    <>
-      {a}
-      <em>{accent}</em>
-      {b}
-    </>
-  );
-}
-
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
     <div className="eyebrow">
@@ -65,31 +52,11 @@ export default async function HomePage({ params }: Props) {
 
   return (
     <>
-      {/* 1. HERO — to'q */}
-      <section className="hero">
-        <Tiles className="hero-pattern" />
-        <div className="wrap hero-grid">
-          <div>
-            <h1>
-              <Headline text={h.hero.h1} accent={h.hero.h1Accent} />
-            </h1>
-            <p className="lead">{h.hero.lead}</p>
-            <div className="actions">
-              <a className="btn btn-accent" href="#ariza">
-                {h.hero.cta}
-                <span className="tile" aria-hidden="true" />
-              </a>
-              <p className="hero-note">{h.hero.note}</p>
-            </div>
-          </div>
-          <div className="hero-card">
-            <ReportCard s={h.hero.sample} locale={locale} />
-          </div>
-        </div>
-      </section>
+      {/* 1. HERO — toʻq, kinematografik; keyingi och «varaq» ustiga chiqadi */}
+      <Hero h={h.hero} locale={locale} />
 
       {/* 2. QACHON MUROJAAT QILISHADI — och */}
-      <section id="holatlar" className="light">
+      <section id="holatlar" className="light sheet">
         <div className="wrap">
           <div className="head">
             <div>

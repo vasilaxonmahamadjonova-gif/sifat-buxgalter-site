@@ -15,7 +15,10 @@ export default function Footer({ locale }: { locale: Locale }) {
       </div>
       <div className="wrap" style={{ position: "relative" }}>
         <Link href={homePath(locale)} className="brand">
-          <Tiles className="brand-mark" /> <span>SIFAT</span>&nbsp;BUXGALTER
+          <Tiles className="brand-mark" />
+          <span className="brand-text">
+            <b>SIFAT</b> BUXGALTER
+          </span>
         </Link>
         <div className="online">{t.footer.online}</div>
         <div className="footer-grid">

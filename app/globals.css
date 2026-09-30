@@ -27,7 +27,7 @@
 
 /* ── reset ── */
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: auto; scroll-padding-top: 88px; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: auto; scroll-padding-top: 80px; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .light :focus-visible, .form :focus-visible { outline-color: var(--ink); }
 body {
@@ -42,10 +42,11 @@ body {
 a { color: inherit; }
 img, svg { display: block; max-width: 100%; }
 button { font: inherit; }
-h1, h2, h3, h4 { margin: 0; font-weight: 700; letter-spacing: -0.02em; line-height: 1.08; }
-h1 { font-size: clamp(40px, 5.4vw, 80px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.02; }
-h2 { font-size: clamp(34px, 4.2vw, 60px); }
-h3 { font-size: clamp(20px, 1.6vw, 24px); letter-spacing: -0.01em; }
+/* Premium Quiet Luxury: katta sarlavhalar Regular 400, manfiy treking; kartalar sarlavhasi 500 */
+h1, h2, h3, h4 { margin: 0; font-weight: 400; letter-spacing: -0.02em; line-height: 1.05; }
+h1 { font-size: clamp(40px, 5vw, 68px); letter-spacing: -0.03em; line-height: 1.02; }
+h2 { font-size: clamp(32px, 3.6vw, 50px); }
+h3 { font-size: clamp(20px, 1.6vw, 24px); font-weight: 500; letter-spacing: -0.01em; }
 p { margin: 0; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 
@@ -96,67 +97,7 @@ section { padding: var(--section) 0; }
 .dark .link { color: var(--accent); }
 .light .link { color: var(--ink); }
 
-/* ── header: doim yuqorida. Hero ustida shaffof, skrollda toʻq fon ── */
-.header { position: fixed; top: 0; left: 0; right: 0; z-index: 20; color: var(--white); transition: background-color .2s ease, border-color .2s ease; border-bottom: 1px solid transparent; }
-.header.scrolled { background: var(--bg-dark); border-bottom-color: var(--line-dark); }
-.header .wrap { display: flex; align-items: center; gap: 32px; height: 96px; transition: height .2s ease; }
-.header.scrolled .wrap { height: 72px; }
-.brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 800; letter-spacing: .04em; font-size: 15px; white-space: nowrap; }
-.brand svg { width: 28px; height: 29px; }
-.brand span { color: var(--accent); }
-.nav { display: flex; gap: 28px; margin: 0 auto; }
-.nav a { text-decoration: none; color: rgba(255, 255, 255, .78); font-size: 15px; font-weight: 500; }
-.nav a:hover { color: var(--white); }
-.header-right { display: flex; align-items: center; gap: 20px; }
-.header-phone { text-decoration: none; font-size: 15px; font-weight: 600; white-space: nowrap; color: var(--white); }
-.header-phone:hover { color: var(--accent); }
-.lang { text-decoration: none; font-size: 13px; font-weight: 700; padding: 8px 12px; border: 1px solid rgba(255, 255, 255, .25); border-radius: var(--radius); }
-.lang:hover { border-color: var(--white); }
-.menu-btn { display: none; background: none; color: var(--white); border: 1px solid rgba(255, 255, 255, .25); border-radius: var(--radius); padding: 10px 12px; cursor: pointer; }
-.mobile-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg-dark); border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); }
-.mobile-nav.open { display: block; }
-.mobile-nav a { display: block; padding: 18px var(--gutter); text-decoration: none; border-bottom: 1px solid var(--line-dark); font-weight: 500; color: var(--white); }
-.mobile-nav .mobile-cta { color: var(--accent); font-weight: 700; }
-@media (max-width: 960px) {
-  .nav, .header .btn, .header .lang, .header-phone { display: none; }
-  .menu-btn { display: inline-block; margin-left: auto; }
-  .header .wrap, .header.scrolled .wrap { height: 68px; }
-}
-/* ichki sahifalarda header to'q fon ustida */
-.page-hero { padding-top: calc(96px + 56px); }
-
-/* ── hero: to'liq ekran, chetdan chetga, faqat sarlavha + 1 qator + 1 tugma ── */
-.hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; padding: 140px 0 96px; background: var(--bg-dark); color: var(--white); overflow: hidden; }
-.hero-pattern { position: absolute; right: -6vw; top: 10vh; width: 54vw; max-width: 800px; height: auto; color: var(--white); opacity: .045; pointer-events: none; }
-.hero .wrap { position: relative; width: 100%; }
-.hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 64px; align-items: center; }
-.hero-card { display: flex; justify-content: flex-end; }
-.hero h1 { font-size: clamp(40px, 5.2vw, 76px); max-width: 15ch; margin-bottom: 36px; }
-.hero h1 em { font-style: normal; color: var(--accent); }
-.hero .lead { margin-bottom: 48px; max-width: 600px; }
-.hero .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 24px 40px; }
-.hero-note { font-size: 15px; color: rgba(255, 255, 255, .6); max-width: 360px; line-height: 1.45; }
-@media (max-width: 960px) {
-  .hero { padding: 120px 0 72px; min-height: 0; }
-  .hero-pattern { display: none; }
-  .hero-grid { grid-template-columns: 1fr; gap: 48px; }
-  .hero-card { justify-content: flex-start; }
-}
-
-/* hisobot kartasi — hujjat kabi oq qogʻoz. Ikonka yoʻq, bitta ajratilgan qator, jadval raqamlar */
-.paper { background: var(--white); color: var(--ink); border-radius: var(--radius); padding: 32px 32px 26px; width: 100%; max-width: 460px; font-variant-numeric: tabular-nums; }
-.paper-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding-bottom: 18px; border-bottom: 2px solid var(--ink); }
-.paper-kicker { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; line-height: 1.3; }
-.paper-period { font-size: 15px; color: var(--muted); margin-top: 6px; text-transform: capitalize; }
-.paper-badge { flex: none; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; padding: 6px 10px; background: var(--accent); color: var(--ink); font-weight: 700; border-radius: 2px; }
-.paper-rows li { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line-light); font-size: 15px; line-height: 1.4; }
-.paper-rows .k { color: rgba(27, 27, 39, .72); }
-.paper-rows .v { font-weight: 700; text-align: right; white-space: nowrap; }
-.paper-rows li.hi { margin: 8px -14px; padding: 14px; background: var(--accent-light); border-radius: var(--radius); border-bottom: 0; }
-.paper-rows li.hi .k { color: var(--ink); font-weight: 500; }
-.paper-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 22px; font-size: 13px; color: var(--muted); }
-.paper-mark { width: 26px; height: 27px; color: var(--accent); flex: none; }
-@media (max-width: 480px) { .paper { padding: 24px 20px; } .paper-rows li { flex-direction: column; gap: 4px; } .paper-rows .v { text-align: left; white-space: normal; } }
+/* header, hero va hisobot kartasi — app/hero.css (Premium Quiet Luxury) */
 
 /* ── logo pattern (4 ta qiya to'rtburchak) ── */
 .tiles { width: 100%; height: auto; }
@@ -368,13 +309,12 @@ section { padding: var(--section) 0; }
 .dark .form .privacy { color: var(--muted); }
 @media (max-width: 900px) { .cta-grid { grid-template-columns: 1fr; gap: 48px; } .form { padding: 32px 22px 28px; } }
 
-/* ── mobil: pastda doim turadigan ariza paneli (audit 8.4) ── */
+/* ── mobil: pastda doim turadigan ariza paneli (audit 8.4) — pill + shisha doira ── */
 .mobile-sticky-cta { display: none; }
 @media (max-width: 960px) {
-  .mobile-sticky-cta { display: grid; grid-template-columns: 1fr 56px; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 25; padding: 10px var(--gutter) calc(10px + env(safe-area-inset-bottom, 0px)); background: rgba(27, 27, 39, .96); border-top: 1px solid var(--line-dark); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-  .mobile-sticky-cta .btn { padding: 15px 18px; font-size: 16px; justify-content: center; }
-  .mobile-sticky-cta .btn-outline { padding: 0; }
-  .mobile-sticky-cta svg { width: 22px; height: 22px; }
+  .mobile-sticky-cta { display: grid; grid-template-columns: 1fr 52px; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 25; padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px)); background: rgba(18, 20, 27, .92); border-top: 1px solid rgba(255, 255, 255, .12); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+  .mobile-sticky-cta .pill { width: 100%; justify-content: space-between; }
+  .mobile-sticky-cta .call { height: 52px; width: 52px; padding: 0; justify-content: center; border-radius: 50%; }
   body { padding-bottom: 84px; }
 }
 
@@ -391,7 +331,7 @@ section { padding: var(--section) 0; }
 @media (max-width: 520px) { .footer-grid { grid-template-columns: 1fr; } }
 
 /* ── ichki sahifalar ── */
-.page-hero { background: var(--bg-dark); color: var(--white); padding-bottom: clamp(72px, 8vw, 120px); }
+.page-hero { background: var(--bg-dark); color: var(--white); padding-top: calc(64px + 64px); padding-bottom: clamp(72px, 8vw, 120px); }
 .page-hero h1 { font-size: clamp(38px, 5vw, 72px); max-width: 16ch; margin-bottom: 24px; }
 .page-hero .lead { max-width: 640px; }
 .page-hero .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px; }

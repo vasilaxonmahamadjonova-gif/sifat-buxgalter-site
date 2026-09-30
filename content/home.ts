@@ -5,8 +5,11 @@ export type HomeContent = {
   hero: {
     eyebrow: string;
     h1: string;
+    /** Eskirgan: sarlavhada sariq soʻz yoʻq (Premium Quiet Luxury). Birinchi gap shaffof, qolgani oq. */
     h1Accent?: string;
     lead: string;
+    /** Xizmat ustuni: «{n} yillik tajriba» + 1 qator izoh. {n} = joriy yil − since */
+    exp: { since: number; label: string; note: string };
     cta: string;
     telegram: string;
     note: string;
@@ -72,10 +75,9 @@ export const home: Record<Locale, HomeContent> = {
     },
     hero: {
       eyebrow: "Buxgalteriya xizmati · Toshkent",
-      h1: "Buxgalteringiz bor. Soliq xavfi esa hali ham sizning boʻyningizda",
-      h1Accent: "Soliq xavfi",
-      lead:
-        "Hisobot oʻz vaqtida topshirilishi eng kam talab. Biz unga savolga tez javob, soliqni qonuniy kamaytirish va shartnomada yozilgan javobgarlikni qoʻshamiz. Xato bizdan chiqsa, jarimani oʻzimiz toʻlaymiz.",
+      h1: "Buxgalteringiz bor. Soliq xavfi esa hali ham sizning boʻyningizda.",
+      lead: "Hisobotni oʻz vaqtida topshiramiz, soliqni qonuniy kamaytiramiz va javobgarlikni shartnomada yozamiz.",
+      exp: { since: 2016, label: "{n} yillik tajriba", note: "2016-yildan beri MChJ hisobini yuritamiz. Soliq tizimini ichidan bilamiz." },
       cta: "Bepul konsultatsiya",
       telegram: "Telegramda yozish",
       note:
@@ -277,10 +279,9 @@ export const home: Record<Locale, HomeContent> = {
     },
     hero: {
       eyebrow: "Аутсорсинг бухгалтерии · Ташкент",
-      h1: "Бухгалтер у вас есть. Налоговый риск — всё ещё на вас",
-      h1Accent: "Налоговый риск",
-      lead:
-        "Отчёты сдаются в срок — это минимум. Мы добавляем три вещи: ответ на любой вопрос за 10 минут, законное снижение налогов и ответственность, прописанную в договоре, — штраф по нашей ошибке платим сами. Учёт лично ведёт главный бухгалтер с опытом с 2016 года.",
+      h1: "Бухгалтер у вас есть. Налоговый риск всё ещё на вас.",
+      lead: "Сдаём отчёты в срок, законно снижаем налоги и прописываем ответственность в договоре.",
+      exp: { since: 2016, label: "{n} лет опыта", note: "Ведём учёт ООО с 2016 года. Знаем налоговую систему изнутри." },
       cta: "Бесплатный звонок на 10 минут",
       telegram: "Написать в Telegram",
       note: "Никуда ехать не нужно. Бекзод перезвонит, задаст два-три вопроса о вашем учёте и скажет, где обычно прячется переплата.",

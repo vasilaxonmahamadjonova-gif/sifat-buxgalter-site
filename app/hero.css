@@ -1,0 +1,187 @@
+/* ═══════════════════════════════════════════════════════════
+   SIFAT BUXGALTER — Premium Quiet Luxury (birinchi ekran)
+   Sarlavha · Hero · Shisha hisobot · Pill tugmalar · Och varaq
+   Gʻoya: «raqamlarda tartib = direktorning xotirjamligi».
+   Ishonch shovqin bilan emas, sukunat bilan. 90% ekran — grafit,
+   oq, off-white. Oltin faqat nuqta-nuqta: doira, plashka, imtiyoz qatori.
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --bg-page: #EBEBEA;
+  --bg-surface: #F4F3F0;
+  --bg-card: #FFFFFF;
+  --graphite: #12141B;
+  --graphite-2: #1B1E27;
+
+  --text-primary: #1A1A1A;
+  --text-secondary: #6B6B6B;
+  --text-muted: #9A9A9A;
+  --on-dark: #FFFFFF;
+  --on-dark-2: rgba(255, 255, 255, .62);
+  --ghost: rgba(255, 255, 255, .50);
+
+  --gold: #D2B062;
+  --gold-light: #E9D9B0;
+  --gold-soft: #F5EEDC;
+  --gold-dark: #A8893F;
+
+  --line-soft: rgba(0, 0, 0, .06);
+  --line-ghost: rgba(255, 255, 255, .12);
+
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --hd-h: 64px;
+  --r-hero: 40px;
+}
+
+/* ── pill tugmalar: faqat pill yoki doira ── */
+.pill { display: inline-flex; align-items: center; gap: 14px; height: 52px; padding: 0 5px 0 24px; border-radius: 999px; text-decoration: none; font-size: 14px; font-weight: 500; letter-spacing: 0; white-space: nowrap; transition: box-shadow .4s var(--ease), transform .4s var(--ease); }
+.pill-light { background: #FFFFFF; color: var(--text-primary); }
+.pill-dark { background: var(--text-primary); color: #FFFFFF; }
+.pill-orb { position: relative; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(145deg, #DEC27E, #B8974B); color: #FFFFFF; flex: none; overflow: hidden; }
+.pill-orb svg { transition: transform .4s var(--ease); }
+.pill:hover { box-shadow: 0 8px 24px rgba(0, 0, 0, .25); }
+.pill:hover .pill-orb svg { transform: rotate(45deg); }
+.pill-dark:hover { box-shadow: 0 8px 24px rgba(0, 0, 0, .18); }
+
+.glass-pill { display: inline-flex; align-items: center; gap: 8px; height: 34px; padding: 0 14px; border-radius: 999px; background: rgba(255, 255, 255, .10); border: 1px solid rgba(255, 255, 255, .16); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); color: var(--on-dark); font-size: 13px; font-weight: 400; text-decoration: none; cursor: pointer; transition: background-color .4s var(--ease), border-color .4s var(--ease); }
+.glass-pill:hover { background: rgba(255, 255, 255, .16); border-color: rgba(255, 255, 255, .28); }
+
+.badge-pill { display: inline-flex; align-items: center; height: 22px; padding: 0 9px; border-radius: 999px; border: 1px solid var(--gold); color: var(--gold); font-size: 10px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; line-height: 1; white-space: nowrap; }
+
+.plate { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; background: rgba(255, 255, 255, .12); color: var(--on-dark); flex: none; }
+
+/* ── logo (sarlavha va footer) ── */
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--on-dark); white-space: nowrap; }
+.brand-mark { width: 24px; height: 25px; color: var(--gold); }
+.brand-text { font-size: 13px; letter-spacing: .10em; font-weight: 400; }
+.brand-text b { font-weight: 600; }
+
+/* ── sarlavha: 64px, shaffof, pastida 1px chiziq; skrollda grafit + blur ── */
+.hd { position: fixed; top: 0; left: 0; right: 0; z-index: 30; color: var(--on-dark); border-bottom: 1px solid var(--line-ghost); transition: background-color .4s var(--ease); }
+.hd-scrolled { background: rgba(18, 20, 27, .82); backdrop-filter: blur(16px) saturate(120%); -webkit-backdrop-filter: blur(16px) saturate(120%); }
+.hd-row { display: flex; align-items: center; gap: 28px; height: var(--hd-h); padding: 0 0 0 clamp(20px, 3vw, 40px); max-width: 1440px; margin: 0 auto; }
+.hd-nav { display: flex; align-items: center; gap: 22px; margin: 0 auto; }
+.hd-links { display: flex; gap: 22px; }
+.hd-links a { color: rgba(255, 255, 255, .8); text-decoration: none; font-size: 13px; transition: color .3s var(--ease); }
+.hd-links a:hover { color: var(--on-dark); }
+.hd-right { display: flex; align-items: center; gap: 20px; height: 100%; }
+.hd-phone { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; text-decoration: none; color: var(--on-dark); }
+.hd-phone-num { display: inline-flex; align-items: center; gap: 8px; font-size: 17px; font-weight: 500; line-height: 1; letter-spacing: -.01em; white-space: nowrap; }
+.hd-phone .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex: none; }
+.hd-phone-sub { font-size: 11px; color: var(--on-dark-2); line-height: 1; padding-left: 13px; white-space: nowrap; }
+.hd-phone-icon { display: none; width: 34px; padding: 0; justify-content: center; }
+.lang-pill { display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 10px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .22); font-size: 11px; letter-spacing: .06em; text-decoration: none; color: rgba(255, 255, 255, .45); transition: border-color .3s var(--ease); }
+.lang-pill .on { color: var(--on-dark); }
+.lang-pill .sep { width: 1px; height: 10px; background: rgba(255, 255, 255, .22); }
+.lang-pill:hover { border-color: rgba(255, 255, 255, .5); }
+.hd-tab { display: inline-flex; align-items: center; gap: 8px; height: 100%; padding: 0 clamp(20px, 3vw, 40px); border-left: 1px solid var(--line-ghost); font-size: 13px; color: rgba(255, 255, 255, .86); text-decoration: none; white-space: nowrap; transition: background-color .4s var(--ease), color .3s var(--ease); }
+.hd-tab svg { color: var(--gold); transition: transform .4s var(--ease); }
+.hd-tab:hover { background: rgba(255, 255, 255, .06); color: var(--on-dark); }
+.hd-tab:hover svg { transform: translate(2px, -2px); }
+.menu-pill { display: none; font: inherit; font-size: 13px; }
+
+.mobile-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(18, 20, 27, .96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--line-ghost); padding: 8px 16px 16px; }
+.mobile-nav.open { display: block; }
+.mobile-nav a { display: flex; align-items: center; justify-content: space-between; padding: 15px 4px; text-decoration: none; color: var(--on-dark); font-size: 16px; border-bottom: 1px solid rgba(255, 255, 255, .08); }
+.mobile-nav .mobile-cta { color: var(--gold); border-bottom: 0; }
+
+@media (max-width: 1180px) {
+  .hd-phone-sub { display: none; }
+  .hd-phone-num { font-size: 15px; }
+  .hd-links { gap: 16px; }
+}
+@media (max-width: 960px) {
+  .hd-nav, .hd-tab, .hd-phone, .lang-pill { display: none; }
+  .hd-row { padding: 0 16px; gap: 12px; }
+  .hd-right { margin-left: auto; gap: 8px; }
+  .hd-phone-icon, .menu-pill { display: inline-flex; }
+}
+
+/* ── hero: toʻliq ekran, pastki burchaklar 40px, keyingi varaq ustiga chiqadi ── */
+.hx { position: sticky; top: 0; z-index: 0; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; padding: 0; background: var(--graphite); color: var(--on-dark); border-radius: 0 0 var(--r-hero) var(--r-hero); overflow: hidden; isolation: isolate; }
+.hx-bg { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
+.hx-photo, .hx-scene { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%; animation: kenburns 20s var(--ease) infinite alternate; transform-origin: 60% 45%; }
+.hx-scene {
+  background:
+    radial-gradient(ellipse 42% 46% at 76% 58%, rgba(210, 176, 98, .20) 0%, rgba(210, 176, 98, 0) 100%),
+    radial-gradient(ellipse 55% 45% at 88% 20%, rgba(255, 255, 255, .05) 0%, rgba(255, 255, 255, 0) 100%),
+    radial-gradient(ellipse 50% 60% at 12% 40%, rgba(10, 12, 18, .7) 0%, rgba(10, 12, 18, 0) 100%),
+    linear-gradient(115deg, #0F1117 0%, #12141B 45%, #1B1E27 100%);
+}
+.hx-object { position: absolute; right: 4%; top: 2%; width: min(52vw, 720px); height: auto; opacity: 1; filter: blur(11px); }
+.hx-vignette { position: absolute; inset: 0; background:
+  linear-gradient(180deg, rgba(18, 20, 27, .6) 0%, rgba(18, 20, 27, 0) 18%),
+  linear-gradient(180deg, rgba(18, 20, 27, 0) 30%, rgba(18, 20, 27, .6) 65%, rgba(18, 20, 27, .95) 100%),
+  radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, .35) 100%); }
+.hx-grain { position: absolute; inset: 0; opacity: .07; mix-blend-mode: overlay; background-size: 160px 160px; }
+@keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.06); } }
+
+.hx-grid { position: relative; display: grid; grid-template-columns: 13% minmax(0, 1fr) 380px; gap: 0 40px; align-items: end; width: 100%; max-width: 1440px; margin: 0 auto; padding: calc(var(--hd-h) + 56px) clamp(20px, 3vw, 40px) 56px; }
+
+/* xizmat ustuni: pastga bosilgan, oʻngida 1px chiziq */
+.hx-aside { align-self: stretch; display: flex; flex-direction: column; justify-content: flex-end; gap: 12px; padding-right: 24px; border-right: 1px solid var(--line-ghost); animation: rise .7s var(--ease) both; animation-delay: .5s; }
+.hx-exp { font-size: 22px; font-weight: 600; letter-spacing: -.01em; line-height: 1.1; }
+.hx-exp-note { font-size: 11px; line-height: 1.45; color: var(--on-dark-2); max-width: 150px; }
+.hx-exp-inline { display: none; }
+
+/* matn: 2-ustundan boshlanadi */
+.hx-copy { padding-bottom: 6px; }
+.hx-h1 { font-size: clamp(38px, 4.6vw, 68px); font-weight: 400; letter-spacing: -.03em; line-height: 1.02; max-width: 15ch; margin: 0 0 22px; }
+.hx-h1 span { display: block; animation: rise .7s var(--ease) both; }
+.hx-h1 .ghost { color: var(--ghost); animation-delay: .1s; }
+.hx-h1 .main { color: var(--on-dark); animation-delay: .25s; }
+.hx-lead { font-size: 15px; line-height: 1.55; color: var(--on-dark-2); max-width: 480px; margin-bottom: 30px; animation: rise .7s var(--ease) both; animation-delay: .4s; }
+.hx-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; animation: rise .7s var(--ease) both; animation-delay: .5s; }
+
+.hx-card { display: flex; justify-content: flex-end; animation: rise .8s var(--ease) both; animation-delay: .35s; }
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+/* ── shisha hisobot kartasi ── */
+.rep { width: 100%; max-width: 380px; padding: 24px; border-radius: 18px; background: rgba(18, 20, 27, .45); border: 1px solid rgba(255, 255, 255, .10); backdrop-filter: blur(20px) saturate(120%); -webkit-backdrop-filter: blur(20px) saturate(120%); box-shadow: 0 30px 60px rgba(0, 0, 0, .25); font-variant-numeric: tabular-nums; }
+.rep-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--line-ghost); }
+.rep-kicker { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; line-height: 1.3; color: var(--on-dark); }
+.rep-period { font-size: 12px; color: var(--on-dark-2); margin-top: 5px; text-transform: capitalize; }
+.rep-rows { margin-top: 4px; }
+.rep-rows li { display: flex; justify-content: space-between; align-items: center; gap: 14px; min-height: 44px; padding: 0 2px; border-bottom: 1px solid rgba(255, 255, 255, .08); font-size: 14px; line-height: 1.4; opacity: 0; animation: rise .6s var(--ease) both; animation-delay: calc(.6s + var(--i) * 120ms); }
+.rep-rows li:last-child { border-bottom: 0; }
+.rep-rows .k { color: var(--on-dark-2); }
+.rep-rows .v { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--on-dark); text-align: right; white-space: nowrap; }
+.rep-rows .tick { display: inline-grid; place-items: center; width: 16px; height: 16px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .3); color: var(--on-dark); flex: none; transform: scale(0); animation: pop .4s var(--ease) both; animation-delay: calc(.95s + var(--i) * 120ms); }
+.rep-rows li.hi { position: relative; margin: 6px -10px; padding: 0 12px; border-bottom: 0; border-radius: 10px; }
+.rep-rows li.hi::before { content: ""; position: absolute; inset: 0; border-radius: 10px; background: rgba(210, 176, 98, .14); opacity: 0; animation: fade .6s var(--ease) both; animation-delay: 1.6s; }
+.rep-rows li.hi .k { position: relative; color: var(--on-dark); }
+.rep-rows li.hi .v { position: relative; color: var(--gold); }
+.rep-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line-ghost); font-size: 11px; color: var(--text-muted); animation: rise .6s var(--ease) both; animation-delay: 1.5s; }
+.orb-tick { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--gold); color: #FFFFFF; flex: none; }
+@keyframes pop { from { transform: scale(0); } to { transform: scale(1); } }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* ── och varaq: hero ustiga chiqadi (stol ustiga qoʻyilgan hisobot kabi) ── */
+.sheet { position: relative; z-index: 2; margin-top: calc(-1 * var(--r-hero)); border-radius: var(--r-hero) var(--r-hero) 0 0; background: var(--bg-surface); padding-top: 72px; }
+.sheet ~ * { position: relative; z-index: 2; }
+
+/* ── adaptiv ── */
+@media (max-width: 1024px) {
+  .hx-grid { grid-template-columns: 1fr; gap: 40px; padding-top: calc(var(--hd-h) + 48px); }
+  .hx-aside { display: none; }
+  .hx-exp-inline { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 20px; font-size: 14px; font-weight: 500; animation: rise .7s var(--ease) both; }
+  .hx-exp-inline .plate { width: 28px; height: 28px; border-radius: 7px; }
+  .hx-card { justify-content: flex-start; }
+  .hx-object { right: -10%; top: 4%; width: 70vw; opacity: .6; }
+}
+@media (max-width: 768px) {
+  :root { --r-hero: 24px; }
+  .hx { align-items: flex-start; }
+  .hx-grid { padding: calc(var(--hd-h) + 36px) 16px 40px; gap: 32px; }
+  .hx-h1 { font-size: clamp(38px, 9vw, 42px); }
+  .hx-lead { font-size: 15px; margin-bottom: 24px; }
+  .rep { max-width: none; padding: 20px; }
+  .rep-rows .v { white-space: normal; text-align: right; }
+  .sheet { padding-top: 56px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hx-photo, .hx-scene { animation: none; }
+  .hx-aside, .hx-h1 span, .hx-lead, .hx-actions, .hx-card, .hx-exp-inline, .rep-rows li, .rep-rows .tick, .rep-rows li.hi::before, .rep-foot { animation: none; opacity: 1; transform: none; }
+  .pill, .pill-orb svg, .hd-tab svg { transition: none; }
+}

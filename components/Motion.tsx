@@ -8,7 +8,6 @@ import { usePathname } from "next/navigation";
  * JS boʻlmasa hamma narsa darrov koʻrinadi. prefers-reduced-motion hurmat qilinadi.
  */
 const SELECTOR = [
-  ".hero h1", ".hero .lead", ".hero .actions", ".paper",
   ".head", ".manifest", ".stat", ".trig-grid li", ".trig-note",
   ".check-q li", ".check-outro", ".risk-steps li", ".risk-big", ".risk-note", ".risk-outro",
   ".svc", ".glass-card", ".board-card", ".card", ".who-col", ".process li", ".person",

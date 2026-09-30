@@ -30,6 +30,9 @@ export type UiStrings = {
   skip: string;
   nav: { services: string; pricing: string; team: string; faq: string; contact: string };
   headerCta: string;
+  headerCall: string;
+  headerHours: string;
+  menu: string;
   langSwitch: string;
   breadcrumbHome: string;
   breadcrumbServices: string;
@@ -64,6 +67,9 @@ export const ui: Record<Locale, UiStrings> = {
     skip: "Asosiy qismga oʻtish",
     nav: { services: "Xizmatlar", pricing: "Narxlar", team: "Jamoa", faq: "Savollar", contact: "Aloqa" },
     headerCta: "Bepul konsultatsiya",
+    headerCall: "Qoʻngʻiroq buyurtma qilish",
+    headerHours: "Toshkent · har kuni 9:00–19:00",
+    menu: "Menyu",
     langSwitch: "RU",
     breadcrumbHome: "Bosh sahifa",
     breadcrumbServices: "Xizmatlar",
@@ -106,6 +112,9 @@ export const ui: Record<Locale, UiStrings> = {
     skip: "К основному содержанию",
     nav: { services: "Услуги", pricing: "Цены", team: "Команда", faq: "Вопросы", contact: "Контакты" },
     headerCta: "Звонок на 10 минут",
+    headerCall: "Заказать звонок",
+    headerHours: "Ташкент · ежедневно 9:00–19:00",
+    menu: "Меню",
     langSwitch: "UZ",
     breadcrumbHome: "Главная",
     breadcrumbServices: "Услуги",

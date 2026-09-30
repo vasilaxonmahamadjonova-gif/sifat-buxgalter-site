@@ -1,37 +1,47 @@
 import type { HomeContent } from "@/content/home";
 import { fillPeriod, reportPeriod } from "@/content/months";
 import type { Locale } from "@/content/services";
-import Tiles from "./Tiles";
+import { Check } from "./ui";
 
 /**
- * Direktor uchun oylik hisobot — hero'dagi oq qogʻoz.
- * Hujjat kabi: sarlavha, davr, «Namuna» belgisi, 5 qator, imzo.
- * Marketing raqamlari (24/7, tashrif) bu yerda yoʻq — ular alohida blokda.
- * Bitta qator (qoʻllangan imtiyoz va tejalgan pul) ajratib koʻrsatiladi.
+ * «Direktor uchun oylik hisobot» — hero'dagi shisha karta (380px, blur 20px).
+ * Ishonch dalili: vaʼda emas, namuna. Bitta ajratilgan qator — qoʻllangan imtiyoz (oltin).
+ * Qatorlar birin-ketin paydo boʻladi (stagger 120ms), galochkalar navbat bilan «qoʻyiladi»,
+ * imtiyoz qatori eng oxirida yonadi — jonli hisobot effekti (CSS, --i orqali).
  */
 export default function ReportCard({ s, locale }: { s: HomeContent["hero"]["sample"]; locale: Locale }) {
   const p = reportPeriod(locale);
   const highlight = 3;
+  const checked = new Set([0, 1, 2]);
   return (
-    <div className="paper">
-      <div className="paper-head">
+    <div className="rep" role="figure" aria-label={s.title}>
+      <div className="rep-head">
         <div>
-          <div className="paper-kicker">{s.title}</div>
-          <div className="paper-period">{fillPeriod(s.period, p)}</div>
+          <div className="rep-kicker">{s.title}</div>
+          <div className="rep-period">{fillPeriod(s.period, p)}</div>
         </div>
-        <span className="paper-badge">{s.badge}</span>
+        <span className="badge-pill">{s.badge}</span>
       </div>
-      <ul className="paper-rows">
+      <ul className="rep-rows">
         {s.rows.map(([k, v], i) => (
-          <li key={k} className={i === highlight ? "hi" : undefined}>
+          <li key={k} className={i === highlight ? "hi" : undefined} style={{ "--i": i } as React.CSSProperties}>
             <span className="k">{k}</span>
-            <span className="v">{fillPeriod(v, p)}</span>
+            <span className="v">
+              {fillPeriod(v, p)}
+              {checked.has(i) && (
+                <i className="tick" aria-hidden="true">
+                  <Check size={12} strokeWidth={1.75} />
+                </i>
+              )}
+            </span>
           </li>
         ))}
       </ul>
-      <div className="paper-foot">
+      <div className="rep-foot">
         <span>{s.signed}</span>
-        <Tiles className="paper-mark" />
+        <i className="orb-tick" aria-hidden="true">
+          <Check size={11} strokeWidth={1.75} />
+        </i>
       </div>
     </div>
   );
