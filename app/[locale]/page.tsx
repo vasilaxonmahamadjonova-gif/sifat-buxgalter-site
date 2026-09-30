@@ -8,7 +8,6 @@ import PromiseIcon from "@/components/PromiseIcon";
 import ReportCard from "@/components/ReportCard";
 import ServiceIcon from "@/components/ServiceIcon";
 import Tiles from "@/components/Tiles";
-import JsonLd, { faqLd } from "@/components/JsonLd";
 import { home } from "@/content/home";
 import { homePath, isLocale, sectionPath, servicePath, siteUrl } from "@/content/routes";
 import { ui } from "@/content/site";
@@ -54,6 +53,10 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
   );
 }
 
+/**
+ * Bosh sahifa: 8 boʻlim (audit 8.6). Navbat: D L D L D L D L, footer D.
+ * 1 hero · 2 qachon murojaat · 3 majburiyatlar · 4 xizmatlar · 5 narx · 6 raqamlar + mijozlar · 7 jarayon · 8 ariza
+ */
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
@@ -62,7 +65,7 @@ export default async function HomePage({ params }: Props) {
 
   return (
     <>
-      {/* 1. HERO — to'liq ekran */}
+      {/* 1. HERO — to'q */}
       <section className="hero">
         <Tiles className="hero-pattern" />
         <div className="wrap hero-grid">
@@ -103,119 +106,7 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      {/* 3. 3 SAVOL — to'q */}
-      <section id="savol" className="dark rel">
-        <div className="pattern-bg" aria-hidden="true">
-          <Tiles />
-        </div>
-        <div className="wrap check-grid">
-          <div>
-            <Eyebrow>{h.check.eyebrow}</Eyebrow>
-            <h2>{h.check.title}</h2>
-            <p className="lead">{h.check.intro}</p>
-          </div>
-          <div>
-            <ol className="check-q">
-              {h.check.questions.map((q) => (
-                <li key={q.q}>
-                  <div>
-                    <div className="q">{q.q}</div>
-                    <div className="why">{q.why}</div>
-                  </div>
-                </li>
-              ))}
-            </ol>
-            <div className="check-outro">
-              <p className="yes">{h.check.outroYes}</p>
-              <p className="no">
-                {h.check.outroNo}{" "}
-                <a className="link" href="#ariza">
-                  {h.check.link}
-                </a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. RAQAMLAR — och */}
-      <section className="light" id="raqamlar">
-        <div className="wrap">
-          <p className="manifest">{h.manifest}</p>
-          <div className="stats">
-            {h.stats.map(([n, l]) => {
-              const m = n.match(/^(\S+)\s*(.*)$/);
-              return (
-                <div className="stat" key={n}>
-                  <strong>
-                    <CountUp value={m ? m[1] : n} />
-                    {m && m[2] && <small>{m[2]}</small>}
-                  </strong>
-                  <span>{l}</span>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* 5. YASHIRIN XAVF — to'q */}
-      <section className="dark" id="xavf">
-        <div className="wrap">
-          <div className="head">
-            <div>
-              <Eyebrow>{h.risk.eyebrow}</Eyebrow>
-              <h2>{h.risk.h2}</h2>
-            </div>
-            <p className="lead">{h.risk.intro}</p>
-          </div>
-          <div className="risk-grid">
-            <ol className="risk-steps">
-              {h.risk.steps.map((s) => (
-                <li key={s}>{s}</li>
-              ))}
-            </ol>
-            <div>
-              <div className="risk-big">{h.risk.big}</div>
-              <p className="risk-note">{h.risk.bigNote}</p>
-            </div>
-          </div>
-          <p className="risk-outro">{h.risk.outro}</p>
-        </div>
-      </section>
-
-      {/* 6. XIZMATLAR — och, bento */}
-      <section id="xizmatlar" className="light">
-        <div className="wrap">
-          <div className="head">
-            <div>
-              <Eyebrow>{h.services.eyebrow}</Eyebrow>
-              <h2>{h.services.h2}</h2>
-            </div>
-            <p className="lead">{h.services.lead}</p>
-          </div>
-          <div className="svc-grid">
-            {h.services.groups.map((g) => (
-              <Link key={g.title} href={servicePath(locale, g.id)} className="svc">
-                <ServiceIcon id={g.id} className="svc-icon" />
-                <h3>{g.title}</h3>
-                <ul>
-                  {g.items.map((i) => (
-                    <li key={i}>{i}</li>
-                  ))}
-                </ul>
-                <div className="more">{t.readMore}</div>
-              </Link>
-            ))}
-            <Link href={sectionPath(locale, "services")} className="svc svc-all">
-              <span>{h.services.hubLink}</span>
-              <Tiles />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* 7. MAJBURIYATLAR — to'q */}
+      {/* 3. MAJBURIYATLAR — to'q, shaffof kartalar */}
       <section id="majburiyatlar" className="dark glass">
         <div className="glass-bg" aria-hidden="true">
           <Tiles className="a" />
@@ -231,7 +122,7 @@ export default async function HomePage({ params }: Props) {
           </div>
           <ul className="glass-grid">
             {h.promises.items.map((p, i) => (
-              <li className="glass-card" key={p.title}>
+              <li className="glass-card cut" key={p.title}>
                 <PromiseIcon i={i} />
                 <h3>{p.title}</h3>
                 <p>{p.text}</p>
@@ -241,8 +132,42 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      {/* 8. NARX — och */}
-      <section id="narx" className="light">
+      {/* 4. XIZMATLAR — och, bento */}
+      <section id="xizmatlar" className="light">
+        <div className="wrap">
+          <div className="head">
+            <div>
+              <Eyebrow>{h.services.eyebrow}</Eyebrow>
+              <h2>{h.services.h2}</h2>
+            </div>
+            <p className="lead">{h.services.lead}</p>
+          </div>
+          <div className="svc-grid">
+            {h.services.groups.map((g) => (
+              <Link key={g.title} href={servicePath(locale, g.id)} className="svc cut">
+                <ServiceIcon id={g.id} className="svc-icon" />
+                <h3>{g.title}</h3>
+                <ul>
+                  {g.items.map((i) => (
+                    <li key={i}>{i}</li>
+                  ))}
+                </ul>
+                <div className="more">{t.readMore}</div>
+              </Link>
+            ))}
+            <Link href={sectionPath(locale, "services")} className="svc svc-all cut">
+              <span>{h.services.hubLink}</span>
+              <Tiles />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. NARX — to'q, shashka */}
+      <section id="narx" className="dark glass">
+        <div className="glass-bg" aria-hidden="true">
+          <Tiles className="b" />
+        </div>
         <div className="wrap wrap-wide">
           <div className="head">
             <div>
@@ -253,7 +178,7 @@ export default async function HomePage({ params }: Props) {
           </div>
           <div className="board">
             {h.pricing.cards.map((c) => (
-              <div className="board-card" key={c.title}>
+              <div className="board-card cut" key={c.title}>
                 <span className="glass-icon" aria-hidden="true">
                   <Tiles />
                 </span>
@@ -265,6 +190,7 @@ export default async function HomePage({ params }: Props) {
           <div className="price-links">
             <a href="#ariza" className="btn btn-accent">
               {h.pricing.cta}
+              <span className="tile" aria-hidden="true" />
             </a>
             <Link className="link" href={sectionPath(locale, "pricing")}>
               {t.pricingLink}
@@ -273,46 +199,36 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      {/* 9. KIMGA — to'q */}
-      <section id="kimga" className="dark rel">
-        <div className="pattern-bg" aria-hidden="true">
-          <Tiles />
-        </div>
+      {/* 6. RAQAMLAR + MIJOZLAR — och */}
+      <section className="light" id="raqamlar">
         <div className="wrap">
-          <div className="head">
+          <div className="stats">
+            {h.stats.map(([n, l]) => {
+              const m = n.match(/^(\S+)\s*(.*)$/);
+              return (
+                <div className="stat" key={n}>
+                  <strong>
+                    <CountUp value={m ? m[1] : n} />
+                    {m && m[2] && <small>{m[2]}</small>}
+                  </strong>
+                  <span>{l}</span>
+                </div>
+              );
+            })}
+          </div>
+          <div className="head head-gap" id="tajriba">
             <div>
-              <Eyebrow>{h.who.eyebrow}</Eyebrow>
-              <h2>{h.who.h2}</h2>
+              <Eyebrow>{h.clients.eyebrow}</Eyebrow>
+              <h2>{h.clients.h2}</h2>
             </div>
+            <p className="lead">{h.clients.lead}</p>
           </div>
-          <div className="who-grid">
-            <div className="who-col yes">
-              <h3>
-                <i /> {h.who.yesTitle}
-              </h3>
-              <ul>
-                {h.who.yes.map((i) => (
-                  <li key={i}>{i}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="who-col no">
-              <h3>
-                <i /> {h.who.noTitle}
-              </h3>
-              <ul>
-                {h.who.no.map((i) => (
-                  <li key={i}>{i}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <p className="who-note">{h.who.note}</p>
+          <ClientLogos />
         </div>
       </section>
 
-      {/* 10. JARAYON — och */}
-      <section id="jarayon" className="light">
+      {/* 7. JARAYON — to'q */}
+      <section id="jarayon" className="dark">
         <div className="wrap">
           <div className="head">
             <div>
@@ -320,7 +236,7 @@ export default async function HomePage({ params }: Props) {
               <h2>{h.process.h2}</h2>
             </div>
           </div>
-          <ol className="process">
+          <ol className="process process-dark">
             {h.process.steps.map((st) => (
               <li key={st.title}>
                 <div>
@@ -333,66 +249,8 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      {/* 11. JAMOA — to'q */}
-      <section id="jamoa" className="dark">
-        <div className="wrap">
-          <div className="head">
-            <div>
-              <Eyebrow>{h.team.eyebrow}</Eyebrow>
-              <h2>{h.team.h2}</h2>
-            </div>
-          </div>
-          <div className="team-grid">
-            {h.team.people.map((p) => (
-              <div className="person" key={p.name}>
-                <div className="role">{p.role}</div>
-                <h3>{p.name}</h3>
-                <ul>
-                  {p.facts.map((f) => (
-                    <li key={f}>{f}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 12. MIJOZLAR — och */}
-      <section id="tajriba" className="light">
-        <div className="wrap">
-          <div className="head">
-            <div>
-              <Eyebrow>{h.clients.eyebrow}</Eyebrow>
-              <h2>{h.clients.h2}</h2>
-            </div>
-            <p className="lead">{h.clients.lead}</p>
-          </div>
-          <ClientLogos />
-        </div>
-      </section>
-
-      {/* 13. SAVOLLAR — to'q */}
-      <section id="savollar" className="dark">
-        <div className="wrap faq-grid">
-          <div>
-            <Eyebrow>{h.faq.eyebrow}</Eyebrow>
-            <h2>{h.faq.h2}</h2>
-          </div>
-          <div className="faq">
-            {h.faq.items.map((f) => (
-              <details key={f.q}>
-                <summary>{f.q}</summary>
-                <p>{f.a}</p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 14. ARIZA — och */}
+      {/* 8. ARIZA — och */}
       <CtaSection locale={locale} eyebrow={h.cta.eyebrow} source="home" />
-      <JsonLd data={faqLd(h.faq.items)} />
     </>
   );
 }

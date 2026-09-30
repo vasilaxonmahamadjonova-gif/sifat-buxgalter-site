@@ -18,11 +18,12 @@ function phoneLooksValid(v: string) {
   return d.length === 9 || (d.length >= 10 && d.length <= 15);
 }
 
+/** Ariza: 3 maydon + rozilik (audit 8.3). Xato maydon ostida, aria-live bilan. */
 export default function LeadForm({ locale, source }: { locale: Locale; source: string }) {
   const t = ui[locale].form;
   const router = useRouter();
   const [busy, setBusy] = useState(false);
-  const [err, setErr] = useState<"" | "phone" | "send">("");
+  const [err, setErr] = useState<"" | "phone" | "consent" | "send">("");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -30,6 +31,10 @@ export default function LeadForm({ locale, source }: { locale: Locale; source: s
     const body = Object.fromEntries(fd.entries()) as Record<string, string>;
     if (!phoneLooksValid(body.phone || "")) {
       setErr("phone");
+      return;
+    }
+    if (!body.consent) {
+      setErr("consent");
       return;
     }
     setBusy(true);
@@ -46,7 +51,6 @@ export default function LeadForm({ locale, source }: { locale: Locale; source: s
         setBusy(false);
         return;
       }
-      // Google Ads / GA4 konversiya
       window.gtag?.("event", "generate_lead", { source, locale });
       router.push(sectionPath(locale, "thanks"));
     } catch {
@@ -56,9 +60,10 @@ export default function LeadForm({ locale, source }: { locale: Locale; source: s
   }
 
   return (
-    <form className="form" onSubmit={onSubmit} id="ariza" noValidate>
+    <form className="form cut" onSubmit={onSubmit} id="ariza" noValidate>
       <label htmlFor="name">{t.name}</label>
       <input id="name" name="name" type="text" required autoComplete="name" maxLength={100} />
+
       <label htmlFor="phone">{t.phone}</label>
       <input
         id="phone"
@@ -67,41 +72,40 @@ export default function LeadForm({ locale, source }: { locale: Locale; source: s
         required
         autoComplete="tel"
         inputMode="tel"
-        placeholder="+998"
+        placeholder="+998 __ ___ __ __"
         maxLength={20}
         aria-invalid={err === "phone" || undefined}
+        aria-describedby="phone-err"
         onChange={() => err === "phone" && setErr("")}
       />
+      <p id="phone-err" className="err" role="alert" aria-live="polite" hidden={err !== "phone"}>
+        {t.errorPhone}
+      </p>
+
       <label htmlFor="company">{t.company}</label>
       <input id="company" name="company" type="text" autoComplete="organization" maxLength={120} />
-      <fieldset>
-        <legend>{t.turnover}</legend>
-        <div className="radios">
-          {t.turnovers.map((v, i) => (
-            <label key={v}>
-              <input type="radio" name="turnover" value={v} defaultChecked={i === 1} /> {v}
-            </label>
-          ))}
-        </div>
-      </fieldset>
+
       {/* honeypot */}
       <input type="text" name="website" tabIndex={-1} autoComplete="off" style={{ position: "absolute", left: -9999 }} aria-hidden="true" />
+
+      <label className="consent">
+        <input type="checkbox" name="consent" value="1" onChange={() => err === "consent" && setErr("")} />
+        <span>
+          {t.consent} <Link href={sectionPath(locale, "privacy")}>{t.privacyLink}</Link>
+        </span>
+      </label>
+      <p className="err" role="alert" aria-live="polite" hidden={err !== "consent"}>
+        {t.errorConsent}
+      </p>
+
       <button className="btn btn-accent" type="submit" disabled={busy}>
         {busy ? t.sending : t.submit}
+        <span className="tile" aria-hidden="true" />
       </button>
-      {err === "phone" && (
-        <div className="err" role="alert">
-          {t.errorPhone}
-        </div>
-      )}
-      {err === "send" && (
-        <div className="err" role="alert">
-          {t.error}
-        </div>
-      )}
-      <div className="privacy">
-        {t.privacy} <Link href={sectionPath(locale, "privacy")}>{t.privacyLink}</Link>
-      </div>
+      <p className="err" role="alert" aria-live="polite" hidden={err !== "send"}>
+        {t.error}
+      </p>
+      <div className="privacy">{t.privacy}</div>
     </form>
   );
 }

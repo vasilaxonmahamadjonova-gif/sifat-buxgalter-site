@@ -49,6 +49,8 @@ export type UiStrings = {
     sending: string;
     privacy: string;
     privacyLink: string;
+    consent: string;
+    errorConsent: string;
     error: string;
     errorPhone: string;
   };
@@ -61,13 +63,13 @@ export const ui: Record<Locale, UiStrings> = {
   uz: {
     skip: "Asosiy qismga oʻtish",
     nav: { services: "Xizmatlar", pricing: "Narxlar", team: "Jamoa", faq: "Savollar", contact: "Aloqa" },
-    headerCta: "Ekspress-audit",
+    headerCta: "Bepul konsultatsiya",
     langSwitch: "RU",
     breadcrumbHome: "Bosh sahifa",
     breadcrumbServices: "Xizmatlar",
     allServices: "Barcha xizmatlar",
     relatedTitle: "Bogʻliq xizmatlar",
-    ctaTitle: "Ekspress-auditga yoziling",
+    ctaTitle: "Bepul konsultatsiya va narx hisobi",
     ctaText:
       "Telefon raqamingizni qoldiring, Bekzod tez orada bogʻlanadi. Hech qayerga borish shart emas: ofisda uchrashuvni faqat oʻzingiz xohlasangiz belgilaymiz.",
     orCall: "Yoki hoziroq qoʻngʻiroq qiling",
@@ -78,10 +80,12 @@ export const ui: Record<Locale, UiStrings> = {
       company: "Kompaniya nomi (ixtiyoriy)",
       turnover: "Yillik aylanma",
       turnovers: ["1 mlrd soʻmgacha", "1–5 mlrd soʻm", "5–20 mlrd soʻm", "20 mlrd soʻmdan ortiq"],
-      submit: "Qoʻngʻiroqni kutaman",
+      submit: "Konsultatsiya olish",
       sending: "Yuborilmoqda…",
       privacy: "Maʼlumotlaringizni faqat siz bilan bogʻlanish uchun ishlatamiz.",
       privacyLink: "Maxfiylik siyosati",
+      consent: "Shaxsiy maʼlumotlarimni qayta ishlashga rozilik beraman.",
+      errorConsent: "Davom etish uchun rozilik belgisini qoʻying.",
       error: "Yuborilmadi. Qoʻngʻiroq qiling yoki Telegramda yozing.",
       errorPhone: "Telefon raqamini tekshiring: +998 XX XXX XX XX",
     },
@@ -122,6 +126,9 @@ export const ui: Record<Locale, UiStrings> = {
       sending: "Отправляем…",
       privacy: "Данные используем только чтобы связаться с вами.",
       privacyLink: "Политика конфиденциальности",
+      // Yangi qator (RU): rozilik chekboksi qonun talabi. Mijoz tasdiqlashi kerak.
+      consent: "Даю согласие на обработку персональных данных.",
+      errorConsent: "Поставьте галочку согласия, чтобы продолжить.",
       error: "Не отправилось. Позвоните или напишите в Telegram.",
       errorPhone: "Проверьте номер телефона: +998 XX XXX XX XX",
     },

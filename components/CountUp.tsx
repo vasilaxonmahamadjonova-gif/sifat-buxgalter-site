@@ -11,8 +11,9 @@ export default function CountUp({ value }: { value: string }) {
     const m = value.match(/^(\d[\d\s]*)(.*)$/);
     if (!m || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const target = parseInt(m[1].replace(/\s/g, ""), 10);
+    if (target >= 1000) return; // yil sanalmaydi (audit 8.7)
     const suffix = m[2];
-    const from = target >= 1000 ? target - 36 : 0;
+    const from = 0;
     const dur = 1400;
     let started = false;
     const io = new IntersectionObserver((entries) => {

@@ -76,7 +76,7 @@ export const home: Record<Locale, HomeContent> = {
       h1Accent: "Soliq xavfi",
       lead:
         "Hisobot oʻz vaqtida topshirilishi eng kam talab. Biz unga savolga tez javob, soliqni qonuniy kamaytirish va shartnomada yozilgan javobgarlikni qoʻshamiz. Xato bizdan chiqsa, jarimani oʻzimiz toʻlaymiz.",
-      cta: "Ekspress-audit",
+      cta: "Bepul konsultatsiya",
       telegram: "Telegramda yozish",
       note:
         "Birinchi suhbat bepul, 10 daqiqa. Hech qayerga borishingiz shart emas. Bekzod oʻzi qoʻngʻiroq qiladi va ortiqcha toʻlov odatda qayerda yashirinishini aytadi.",
@@ -127,8 +127,8 @@ export const home: Record<Locale, HomeContent> = {
         { q: "Oxirgi ikki yilda ortiqcha toʻlangan soliqlar qaytarib olindimi?", why: "«Ortiqcha toʻlov yoʻq» desa, buni hech kim tekshirmagan. Muddati oʻtsa, bu pul qaytmaydi." },
       ],
       outroYes: "Uchala savolga aniq javob bormi? Unda buxgalteringiz kuchli. Biz sizga kerak emasmiz, buni ochiq aytamiz.",
-      outroNo: "Bittasiga ham javob yoʻqmi? Pul aynan shu yerda yoʻqolyapti. Ekspress-auditda qaysi biridan boshlash kerakligini aytamiz, bepul.",
-      link: "Ekspress-auditga yozilish →",
+      outroNo: "Bittasiga ham javob yoʻqmi? Pul aynan shu yerda yoʻqolyapti. Bepul konsultatsiyada qaysi biridan boshlash kerakligini aytamiz.",
+      link: "Bepul konsultatsiyaga yozilish →",
     },
     compare: {
       eyebrow: "Solishtiring",
@@ -192,7 +192,7 @@ export const home: Record<Locale, HomeContent> = {
         { title: "Nega shtatdagi buxgalterdan qimmat", text: "Shtatdagi buxgalter koʻpincha yonidan yana bir nechta firmani yuritadi. Biz kam kompaniya olamiz va har birini oxirigacha tekshiramiz. Siz aynan shu vaqt uchun toʻlaysiz." },
         { title: "Aniq narx qachon aytiladi", text: "Birinchi suhbatda, hujjatlar hajmini bilib olganimizdan keyin. Shartnomagacha narx oʻzgarmaydi." },
       ],
-      cta: "Hujjat hajmini ayting, narxni shu suhbatda aytamiz",
+      cta: "Narxni bilish",
     },
     who: {
       eyebrow: "Kim bilan ishlaymiz",

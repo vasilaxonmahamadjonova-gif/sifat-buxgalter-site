@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import MobileCta from "@/components/MobileCta";
 import Motion from "@/components/Motion";
 import JsonLd from "@/components/JsonLd";
 import { isLocale, locales, siteUrl } from "@/content/routes";
@@ -54,6 +55,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
         <Header locale={locale} />
         <main id="main">{children}</main>
         <Footer locale={locale} />
+        <MobileCta locale={locale} />
         <Motion />
         <JsonLd data={business} />
         {gaId && (

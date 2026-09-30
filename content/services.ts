@@ -79,7 +79,7 @@ const uzCommon = {
   processTitle: "Qanday ishlaymiz",
   whyTitle: "Shartnomaga yozadigan vaʼdalarimiz",
   priceTitle: "Narx",
-  cta: "Ekspress-audit",
+  cta: "Bepul konsultatsiya",
   ctaNote:
     "Hech qayerga borishingiz shart emas. Bekzod tez orada bogʻlanadi.",
 };

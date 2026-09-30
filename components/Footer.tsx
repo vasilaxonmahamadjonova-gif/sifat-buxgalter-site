@@ -42,7 +42,7 @@ export default function Footer({ locale }: { locale: Locale }) {
             <h4>{t.footer.services}</h4>
             {top.map((id) => (
               <Link key={id} href={servicePath(locale, id)}>
-                {services[locale][id].title.split(/ — |: |, /)[0].trim()}
+                {services[locale][id].eyebrow.split("·")[0].trim()}
               </Link>
             ))}
             <Link href={sectionPath(locale, "services")}>{t.allServices} →</Link>
